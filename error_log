@@ -1,0 +1,34 @@
+[06-May-2020 20:03:15 UTC] PHP Parse error:  syntax error, unexpected 'foi' (T_STRING), expecting ')' in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:05:00 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:05:00 UTC] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:07:08 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '177.52.162.41' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:07:09 UTC] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:51:15 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '177.52.162.41' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:51:15 UTC] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:55:05 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '177.52.162.41' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:55:05 UTC] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:57:06 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '177.52.162.41' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:57:06 UTC] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:59:43 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '177.52.162.41' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:59:43 UTC] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 20:59:43 UTC] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/demolayceara/public_html/sisce/testesql.php on line 6
+[06-May-2020 21:03:55 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '177.52.162.41' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[06-May-2020 21:06:10 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[06-May-2020 23:20:26 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[06-May-2020 23:42:26 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[06-May-2020 23:51:24 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /home/demolayceara/public_html/sisce/testesql.php on line 18
+[06-May-2020 23:51:26 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /home/demolayceara/public_html/sisce/testesql.php on line 18
+[06-May-2020 23:58:43 UTC] PHP Notice:  Undefined index: act in /home/demolayceara/public_html/sisce/testesql.php on line 51
+[06-May-2020 23:59:08 UTC] PHP Warning:  fsockopen(): unable to connect to sis.demolaybrasil.org.br:3306 (Connection timed out) in /home/demolayceara/public_html/sisce/testesql.php on line 57
+[07-May-2020 00:09:11 UTC] PHP Warning:  fsockopen(): unable to connect to sis.demolaybrasil.org.br:3306 (Connection timed out) in /home/demolayceara/public_html/sisce/testesql.php on line 57
+[07-May-2020 16:53:15 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 9
+[07-May-2020 19:46:31 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 9
+[07-May-2020 19:58:58 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[07-May-2020 20:31:53 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[07-May-2020 20:33:25 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[07-May-2020 20:34:08 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[09-May-2020 03:14:48 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[09-May-2020 10:21:24 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[10-May-2020 22:07:39 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[12-May-2020 14:49:53 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
+[12-May-2020 14:55:54 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'sis.demolaybrasil.org.br' (110) in /home/demolayceara/public_html/sisce/testesql.php on line 7
