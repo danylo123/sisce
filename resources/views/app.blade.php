@@ -186,7 +186,7 @@
                             <li><a class="sidebar-link" href="{{ url('painel/midias') }}">Midias</a></li>
                             <!--  <li><a class="sidebar-link" href="{{ url('painel/video_aulas') }}">Video Aula</a></li>
                             <li><a class="sidebar-link" href="{{ url('painel/ouvidoria') }}">Ouvidoria</a></li>  -->
-                            <li><a class="sidebar-link" href="{{ url('painel/transparencia') }}">Portal transparência</a></li>
+                            {{-- <li><a class="sidebar-link" href="{{ url('painel/transparencia') }}">Portal transparência</a></li> --}}
                         </ul>
                     </li>
                     @endif
@@ -206,14 +206,14 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-orange-500 ti-money"></i> </span><span class="title">Portal da
+                    {{-- <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-orange-500 ti-money"></i> </span><span class="title">Portal da
                                 Transparência</span>
                             <span class="arrow"><i class="ti-angle-right"></i></span></a>
                         <ul class="dropdown-menu">
                             <li><a class="sidebar-link" href="{{ url('transparencia/gce') }}">GCE</a></li>
                             <li><a class="sidebar-link" href="{{ url('transparencia/adace') }}">ADACE</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-orange-500 ti-envelope"></i> </span><span class="title">Documentos</span>
                             <span class="arrow"><i class="ti-angle-right"></i></span></a>
