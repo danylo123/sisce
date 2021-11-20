@@ -21,6 +21,7 @@ Capitulos
                                 <th scope="col">Número</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Cidade</th>
+                                <th scope="col">Região</th>
                                 <th scope="col">Última atualização</th>
                                 <th scope="col"></th>
                             </tr>
@@ -31,6 +32,7 @@ Capitulos
                                 <th scope="row">#{{ $c->numero }}</th>
                                 <td>{{ $c->nome }}</td>
                                 <td>{{ $c->cidade->nome }}</td>
+                                <td>{{ $c->regiao->nome }}</td>
                                 <td>{{ $c->updated_at->format('d/m/Y H:i:s') }}</td>
                                 <td><a class="btn btn-warning" href="{{ url('/painel/capitulo/editar/') }}/{{ $c->id }}">Editar</a>
                                     <!--

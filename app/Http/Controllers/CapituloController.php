@@ -24,7 +24,7 @@ class CapituloController extends Controller
     public function listar()
     {
 
-        $capitulos = Capitulo::orderBy('numero', 'asc')->get();
+        $capitulos = Capitulo::orderBy('numero', 'asc')->with('regiao')->get();
 
         $cidades = Cidade::all();
 

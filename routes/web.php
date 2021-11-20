@@ -11,7 +11,9 @@
 |
 */
 
-
+Route::get('/login2', function () {
+    return view('auth.login-2');
+})->name('expulsar');
 
 Route::get('/expulsar', 'HomeController@expulsar')->name('expulsar');
 

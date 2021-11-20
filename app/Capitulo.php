@@ -12,7 +12,7 @@ class Capitulo extends Model
      * @var array
      */
     protected $fillable = [
-        'numero', 'nome', 'cidade_id', 'imagem'
+        'numero', 'nome', 'cidade_id', 'imagem', 'regiao_id'
     ];
 
 
@@ -34,6 +34,13 @@ class Capitulo extends Model
     {
         return $this->hasMany(
             'App\User'
+        );
+    }
+
+    public function regiao()
+    {
+        return $this->belongsTo(
+            'App\Regiao'
         );
     }
 }

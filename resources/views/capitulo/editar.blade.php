@@ -32,6 +32,18 @@ Editar capitulo
                             </option>
                             @endforeach
                         </select></div>
+                        <div class="form-group col-md-6">
+                            <label for="regiao_id">Região</label>
+                            <select id="regiao_id" name="regiao_id" class="form-control" required>
+                            @foreach ($regiaos as $r)
+                            <option value="{{ $r->id }}"
+                                @if($r->id == $c->regiao_id)
+                                selected 
+                                @endif>
+                                {{ $r->nome }}
+                            </option>
+                            @endforeach
+                        </select></div>
                     <div class="form-group col-md-6"><label for="imagem">Brasão</label>
                         <input type="file" class="form-control" id="imagem" name="imagem">
                     </div>

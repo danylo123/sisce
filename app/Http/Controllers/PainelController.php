@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Alert;
 use App\Documento;
 use App\PastaDocumento;
+use App\Regiao;
 use Illuminate\Support\Facades\Auth;
 
 class PainelController extends Controller
@@ -33,19 +34,21 @@ class PainelController extends Controller
     public function capituloListar()
     {
 
-        $capitulos = Capitulo::orderBy('numero', 'asc')->get();
+        $capitulos = Capitulo::orderBy('numero', 'asc')->with('regiao')->get();
 
         $cidades = Cidade::all();
+        $regiaos = Regiao::all();
 
-        return view('painel/capitulo/listar')->with('capitulos', $capitulos)->with('cidades', $cidades);
+        return view('painel/capitulo/listar')->with('capitulos', $capitulos)->with('cidades', $cidades)->with('regiaos');
     }
 
     public function capituloCadastrar()
     {
 
         $cidade = Cidade::all();
+        $regiaos = Regiao::all();
 
-        return view('painel/capitulo/cadastrar')->with('cidade', $cidade);
+        return view('painel/capitulo/cadastrar')->with('cidade', $cidade)->with('regiaos', $regiaos);
     }
     public function capituloEditar($id)
     {
@@ -54,8 +57,9 @@ class PainelController extends Controller
         $capitulo = Capitulo::where("id", $id)->get();
 
         $cidade = Cidade::all();
+        $regiaos = Regiao::all();
         // Chama a view listar e envia os produtos buscados
-        return view('painel/capitulo/editar')->with('capitulo', $capitulo)->with('cidades', $cidade);
+        return view('painel/capitulo/editar')->with('capitulo', $capitulo)->with('cidades', $cidade)->with('regiaos', $regiaos);
     }
 
     public function galeriaListar()
@@ -106,15 +110,15 @@ class PainelController extends Controller
 
         $query = User::select('*');
         if ($nome) {
-            $query->where('name','like','%'.$nome.'%');
+            $query->where('name', 'like', '%' . $nome . '%');
         }
         if ($email) {
-            $query->where('email','like','%'.$email.'%');
+            $query->where('email', 'like', '%' . $email . '%');
         }
         if ($capitulo_id) {
             $query->where('capitulo_id', $capitulo_id);
         }
-        $usuario = $query->paginate(10);        
+        $usuario = $query->paginate(10);
         $capitulo = Capitulo::all();
         return view('painel/usuario/listar')->with('usuarios', $usuario)->with('capitulo', $capitulo)->with('data', $data);
     }
