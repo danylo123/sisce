@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Alert;
 use App\Documento;
 use App\PastaDocumento;
+use App\Priorado;
 use App\Regiao;
 use Illuminate\Support\Facades\Auth;
 
@@ -193,5 +194,28 @@ class PainelController extends Controller
         $documento = Documento::where("id", $id)->get();
 
         return view('painel/documento/editar')->with('documento', $documento)->with('pasta', $pasta);
+    }
+
+    public function prioradoCadastrar()
+    {
+        $regiaos = Regiao::all();
+        return view('painel/priorado/cadastrar')->with('regiaos', $regiaos);
+    }
+
+    public function prioradoListar()
+    {
+        $priorados = Priorado::all();
+        return view('painel/priorado/listar')->with('priorados', $priorados);
+    }
+
+    public function prioradoEditar($id)
+    {
+        Priorado::all();
+        Priorado::find($id);
+        $priorado = Priorado::where("id", $id)->get();
+
+        $regiaos = Regiao::all();
+        // Chama a view listar e envia os produtos buscados
+        return view('painel/priorado/editar')->with('priorado', $priorado)->with('regiaos', $regiaos);
     }
 }

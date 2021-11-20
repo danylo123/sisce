@@ -181,6 +181,7 @@
                             <li><a class="sidebar-link" href="{{ url('painel/avisos') }}">Avisos</a></li>
                             <li><a class="sidebar-link" href="{{ url('painel/usuarios') }}">Usuários</a></li>
                             <li><a class="sidebar-link" href="{{ url('painel/capitulos') }}">Capitulos</a></li>
+                            <li><a class="sidebar-link" href="{{ url('painel/priorados') }}">Priorados</a></li>
                             <li><a class="sidebar-link" href="{{ url('painel/galerias') }}">Galerias</a></li>
                             <li><a class="sidebar-link" href="{{ url('painel/documentos') }}">Documentos</a></li>
                             <li><a class="sidebar-link" href="{{ url('painel/midias') }}">Midias</a></li>

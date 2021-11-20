@@ -131,4 +131,12 @@ Route::group(['middleware' => ['auth', 'acesso.admin']], function () {
     Route::post('/painel/midia/excluirPasta', 'PastaMidiaController@excluirPasta')->name('painel.midia.excluirPasta');
     Route::get('/painel/midia/cadastrar/{id}', 'PastaMidiaController@cadastrar')->name('painel.midia.cadastrar.{id}');
     Route::post('/painel/midia/store', 'MidiaController@store')->name('painel.midia.store');
+
+    Route::get('/painel/priorados', 'PainelController@prioradoListar')->name('painel.priorados');
+    Route::get('/painel/priorado/novo', 'PainelController@prioradoCadastrar')->name('painel.priorado.cadastrar');
+    Route::post('/painel/priorado/novo', 'PrioradoController@store')->name('painel.priorado.novo');
+    Route::get('/painel/priorado/editar/{id}', 'PainelController@prioradoEditar');
+    Route::post('/painel/priorado/editar', 'CapituloController@update')->name('painel.priorado.edit');
+
+
 });
