@@ -149,15 +149,12 @@
         <div class="container">
             <div class="card login-card">
                 <div class="row no-gutters">
-                    <div class="col-md-5">
-                        <img src="{{ url('storage/icone/icone.png') }}" alt="login" class="login-card-img">
-                    </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="card-body">
                             <div class="brand-wrapper">
                                 <img src="{{ url('storage/icone/icone.png') }}" alt="logo" class="logo">
                             </div>
-                            <p class="login-card-description">Sistema da Ordem DeMolay Cearense by Danylo</p>
+                            <p class="login-card-description">Sistema da Ordem DeMolay Cearense</p>
                             <form class="form" id="login-form" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">
@@ -190,6 +187,9 @@
                                 <a href="#!">Ordem DeMolay Ceará.</a>
                             </nav>
                         </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ url('storage/icone/icone.png') }}" alt="login" class="login-card-img">
                     </div>
                 </div>
             </div>
