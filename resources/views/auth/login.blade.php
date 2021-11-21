@@ -157,7 +157,7 @@
                             <div class="brand-wrapper">
                                 <img src="{{ url('storage/icone/icone.png') }}" alt="logo" class="logo">
                             </div>
-                            <p class="login-card-description">Sistema da Ordem DeMolay Cearense</p>
+                            <p class="login-card-description">Sistema da Ordem DeMolay Cearense by Danylo</p>
                             <form class="form" id="login-form" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">
