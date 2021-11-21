@@ -33,6 +33,9 @@ Route::group(['middleware' => ['auth', 'acesso.ativo']], function () {
     Route::get('/capitulos', 'CapituloController@listar')->name('capitulos')->middleware('auth'); // Tela Perfil
     Route::get('/capitulo/{numero}/membros', 'CapituloController@listarMembro')->middleware('auth'); // Tela Perfil
 
+    //Capitulo
+    Route::get('/priorados', 'PrioradoController@listar')->name('priorados')->middleware('auth'); // Tela Perfil
+
     //Listar galerias
     Route::get('/galeria/gme', 'GaleriaController@listarGme')->name('galeria/gme')->middleware('auth'); // Tela Perfil
     Route::get('/galeria/mce', 'GaleriaController@listarMce')->name('galeria/mce')->middleware('auth'); // Tela Perfil
@@ -136,7 +139,5 @@ Route::group(['middleware' => ['auth', 'acesso.admin']], function () {
     Route::get('/painel/priorado/novo', 'PainelController@prioradoCadastrar')->name('painel.priorado.cadastrar');
     Route::post('/painel/priorado/novo', 'PrioradoController@store')->name('painel.priorado.novo');
     Route::get('/painel/priorado/editar/{id}', 'PainelController@prioradoEditar');
-    Route::post('/painel/priorado/editar', 'CapituloController@update')->name('painel.priorado.edit');
-
-
+    Route::post('/painel/priorado/editar', 'PrioradoController@update')->name('painel.priorado.edit');
 });

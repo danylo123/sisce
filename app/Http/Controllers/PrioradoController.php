@@ -36,4 +36,41 @@ class PrioradoController extends Controller
             return redirect()->back();
         }
     }
+
+    public function update(Request $resquest)
+    {
+        $data = $resquest->all();
+        $id = $resquest->id;
+
+        $capitulo = Priorado::find($id);
+
+
+        if ($resquest->hasFile('imagem') && $resquest->imagem->isValid()) {
+
+            $upload = $resquest->imagem->store('priorados');
+
+            $data['imagem'] = $upload;
+        }
+
+
+        $update = $capitulo->update($data);
+
+        if ($update) {
+            toastr()->success('Sucesso ao atualizar priorado');
+
+            return redirect()->route('painel.priorados');
+        } else {
+            toastr()->error('Falha ao atualizar priorado');
+
+            return redirect()->back();
+        }
+    }
+
+    public function listar()
+    {
+
+        $priorados = Priorado::orderBy('numero', 'asc')->with('regiao')->get();
+
+        return view('priorado/listar')->with('priorados', $priorados);
+    }
 }

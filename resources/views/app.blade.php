@@ -9,7 +9,7 @@
     <title>SISCE 1.0 @yield('titulo')</title>
     <!-- Galeria -->
     <link href="https://cdn.jsdelivr.net/lightgallery/1.3.9/css/lightgallery.min.css" rel="stylesheet">
-    <link href="<?php echo asset('css/galeria.css') ?>" rel="stylesheet">
+    <link href="<?php echo asset('css/galeria.css'); ?>" rel="stylesheet">
     <!-- /Galeria -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -134,8 +134,9 @@
         .slider.round:before {
             border-radius: 70%;
         }
+
     </style>
-    <link href="<?php echo asset('css/style.css') ?>" rel="stylesheet">
+    <link href="<?php echo asset('css/style.css'); ?>" rel="stylesheet">
 </head>
 
 <body class="app">
@@ -155,10 +156,12 @@
             <div class="sidebar-inner">
                 <div class="sidebar-logo">
                     <div class="peers ai-c fxw-nw">
-                        <div class="peer peer-greed"><a class="sidebar-link td-n" href="{{ url('index') }}" class="td-n">
+                        <div class="peer peer-greed"><a class="sidebar-link td-n" href="{{ url('index') }}"
+                                class="td-n">
                                 <div class="peers ai-c fxw-nw">
                                     <div class="peer">
-                                        <div class="logo"><img src="{{ url('storage/icone/icone.png') }}" width="55" alt=""></div>
+                                        <div class="logo"><img src="{{ url('storage/icone/icone.png') }}"
+                                                width="55" alt=""></div>
                                     </div>
                                     <div class="peer peer-greed">
                                         <h5 class="lh-1 mB-0 logo-text">SISCE</h5>
@@ -166,41 +169,66 @@
                                 </div>
                             </a></div>
                         <div class="peer">
-                            <div class="mobile-toggle sidebar-toggle"><a href="{{ url('index') }}" class="td-n"><i class="ti-arrow-circle-left"></i></a>
+                            <div class="mobile-toggle sidebar-toggle"><a href="{{ url('index') }}"
+                                    class="td-n"><i class="ti-arrow-circle-left"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <ul class="sidebar-menu scrollable pos-r">
 
-                    <li class="nav-item mT-30"><a class="sidebar-link" href="{{ url('index') }}" default><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Inicio</span></a></li>
-                    @if(auth()->user()->nivel == 3)
-                    <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-black-500 ti-desktop"></i> </span><span class="title">Painel ADM</span>
-                            <span class="arrow"><i class="ti-angle-right"></i></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="sidebar-link" href="{{ url('painel/avisos') }}">Avisos</a></li>
-                            <li><a class="sidebar-link" href="{{ url('painel/usuarios') }}">Usuários</a></li>
-                            <li><a class="sidebar-link" href="{{ url('painel/capitulos') }}">Capitulos</a></li>
-                            <li><a class="sidebar-link" href="{{ url('painel/priorados') }}">Priorados</a></li>
-                            <li><a class="sidebar-link" href="{{ url('painel/galerias') }}">Galerias</a></li>
-                            <li><a class="sidebar-link" href="{{ url('painel/documentos') }}">Documentos</a></li>
-                            <li><a class="sidebar-link" href="{{ url('painel/midias') }}">Midias</a></li>
-                            <!--  <li><a class="sidebar-link" href="{{ url('painel/video_aulas') }}">Video Aula</a></li>
+                    <li class="nav-item mT-30"><a class="sidebar-link" href="{{ url('index') }}" default><span
+                                class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span
+                                class="title">Inicio</span></a></li>
+                    @if (auth()->user()->nivel == 3)
+                        <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
+                                    class="icon-holder"><i class="c-black-500 ti-desktop"></i> </span><span
+                                    class="title">Painel ADM</span>
+                                <span class="arrow"><i class="ti-angle-right"></i></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="sidebar-link" href="{{ url('painel/avisos') }}">Avisos</a></li>
+                                <li><a class="sidebar-link" href="{{ url('painel/usuarios') }}">Usuários</a></li>
+                                <li><a class="sidebar-link" href="{{ url('painel/capitulos') }}">Capitulos</a></li>
+                                <li><a class="sidebar-link" href="{{ url('painel/priorados') }}">Priorados</a></li>
+                                <li><a class="sidebar-link" href="{{ url('painel/galerias') }}">Galerias</a></li>
+                                <li><a class="sidebar-link" href="{{ url('painel/documentos') }}">Documentos</a>
+                                </li>
+                                <li><a class="sidebar-link" href="{{ url('painel/midias') }}">Midias</a></li>
+                                <!--  <li><a class="sidebar-link" href="{{ url('painel/video_aulas') }}">Video Aula</a></li>
                             <li><a class="sidebar-link" href="{{ url('painel/ouvidoria') }}">Ouvidoria</a></li>  -->
-                            {{-- <li><a class="sidebar-link" href="{{ url('painel/transparencia') }}">Portal transparência</a></li> --}}
-                        </ul>
-                    </li>
+                                {{-- <li><a class="sidebar-link" href="{{ url('painel/transparencia') }}">Portal transparência</a></li> --}}
+                            </ul>
+                        </li>
                     @endif
 
-                    <li class="nav-item"><a class="sidebar-link" href="{{ url('capitulos') }}"><span class="icon-holder"><i class="c-brown-500 ti-bag"></i> </span><span class="title">Capitulos</span></a></li>
+                    <li class="nav-item"><a class="sidebar-link" href="{{ url('capitulos') }}"><span
+                                class="icon-holder"><img class="c-brown-500"
+                                src="{{ url('storage/icone/demolay.svg') }}" width="14px"></span><span
+                                class="title">Capitulos</span></a></li>
 
-                    <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-orange-500 ti-gallery"></i> </span><span class="title">Galerias</span>
+                    <li class="nav-item"><a class="sidebar-link" href="{{ url('priorados') }}"><span
+                                class="icon-holder">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    aria-hidden="true" role="img" width="1em" height="1em"
+                                    preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.457 3L21 3.003l.002 3.523l-5.467 5.466l2.828 2.829l1.415-1.414l1.414 1.414l-2.474 2.475l2.828 2.829l-1.414 1.414l-2.829-2.829l-2.475 2.475l-1.414-1.414l1.414-1.415l-2.829-2.828l-2.828 2.828l1.415 1.415l-1.414 1.414l-2.475-2.475l-2.829 2.829l-1.414-1.414l2.829-2.83l-2.475-2.474l1.414-1.414l1.414 1.413l2.827-2.828l-5.46-5.46L3 3l3.546.003l5.453 5.454L17.457 3zm-7.58 10.406L7.05 16.234l.708.707l2.827-2.828l-.707-.707zm9.124-8.405h-.717l-4.87 4.869l.706.707l4.881-4.879v-.697zm-14 0v.7l11.241 11.241l.707-.707L5.716 5.002l-.715-.001z"
+                                        fill="limegreen" />
+                                </svg>
+
+
+                            </span><span class="title">Priorados</span></a></li>
+
+                    <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
+                                class="icon-holder"><i class="c-orange-500 ti-gallery"></i> </span><span
+                                class="title">Galerias</span>
                             <span class="arrow"><i class="ti-angle-right"></i></span></a>
                         <ul class="dropdown-menu">
                             <li><a class="sidebar-link" href="{{ url('galeria/gme') }}">Past's GME's</a></li>
                             <li><a class="sidebar-link" href="{{ url('galeria/mce') }}">Past's MCE's</a></li>
                             <li><a class="sidebar-link" href="{{ url('galeria/icce') }}">Past's ICCE's</a></li>
-                            <li><a class="sidebar-link" href="{{ url('galeria/oficiais_executivos') }}">Past's Oficiais Executivos</a></li>
+                            <li><a class="sidebar-link" href="{{ url('galeria/oficiais_executivos') }}">Past's
+                                    Oficiais Executivos</a></li>
                             <li><a class="sidebar-link" href="{{ url('galeria/mcr') }}">Past's MCR's</a></li>
                             <li><a class="sidebar-link" href="{{ url('galeria/adace') }}">Past's ADACE</a></li>
                             <li><a class="sidebar-link" href="{{ url('galeria/gcc') }}">Past's GCC</a></li>
@@ -216,7 +244,9 @@
                         </ul>
                     </li> --}}
 
-                    <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-orange-500 ti-envelope"></i> </span><span class="title">Documentos</span>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
+                                class="icon-holder"><i class="c-orange-500 ti-envelope"></i> </span><span
+                                class="title">Documentos</span>
                             <span class="arrow"><i class="ti-angle-right"></i></span></a>
                         <ul class="dropdown-menu">
                             <li><a class="sidebar-link" href="{{ url('documento/gce') }}">GCE</a></li>
@@ -226,11 +256,15 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item"><a class="sidebar-link" href="{{ url('midias') }}"><span class="icon-holder"><i class="c-deep-orange-500 ti-save"></i> </span><span class="title">Mídia</span></a></li>
+                    <li class="nav-item"><a class="sidebar-link" href="{{ url('midias') }}"><span
+                                class="icon-holder"><i class="c-deep-orange-500 ti-save"></i> </span><span
+                                class="title">Mídia</span></a></li>
                     <!--
                     <li class="nav-item"><a class="sidebar-link" href="{{ url('video_aulas') }}"><span class="icon-holder"><i class="c-deep-purple-500 ti-video-clapper"></i> </span><span class="title">Video Aulas</span></a></li>
     -->
-                    <li class="nav-item"><a class="sidebar-link" href="{{ url('ouvidoria') }}"><span class="icon-holder"><i class="c-indigo-500 ti-headphone"></i> </span><span class="title">Ouvidoria</span></a></li>
+                    <li class="nav-item"><a class="sidebar-link" href="{{ url('ouvidoria') }}"><span
+                                class="icon-holder"><i class="c-indigo-500 ti-headphone"></i> </span><span
+                                class="title">Ouvidoria</span></a></li>
                     <!--
                     <li class="nav-item"><a class="sidebar-link" href=""><span class="icon-holder"><i class="c-light-blue-500 ti-help-alt"></i> </span><span class="title">Dúvidas Frequentes</span></a>
     -->
@@ -244,7 +278,8 @@
             <div class="header navbar">
                 <div class="header-container">
                     <ul class="nav-left">
-                        <li><a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);"><i class="ti-menu"></i></a>
+                        <li><a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);"><i
+                                    class="ti-menu"></i></a>
                         </li>
                     </ul>
                     <ul class="nav-right">
@@ -255,19 +290,23 @@
                             </ul>
                         </li> -->
 
-                        <li class="dropdown"><a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
+                        <li class="dropdown"><a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1"
+                                data-toggle="dropdown">
                                 <div class="peer mR-10"><img class="w-2r bdrs-50p" src="
-                                @if(auth()->user()->imagem == !null)
-                                {{ url('storage/users/'.auth()->user()->imagem) }}
+                                    @if (auth()->user()->imagem == !null)
+                                    {{ url('storage/users/' . auth()->user()->imagem) }}
                                 @else
-                                {{ url('storage/users/user.png') }}
-                                @endif
-                                " alt="Foto perfil {{ auth()->user()->name }}"></div>
-                                <div class="peer"><span class="fsz-sm c-grey-900">{{ substr(auth()->user()->name, 0, strrpos(substr(auth()->user()->name, 0, 10), ' '))  }}</span></div>
+                                    {{ url('storage/users/user.png') }}
+                                    @endif
+                                    " alt="Foto perfil {{ auth()->user()->name }}"></div>
+                                <div class="peer"><span
+                                        class="fsz-sm c-grey-900">{{ substr(auth()->user()->name, 0, strrpos(substr(auth()->user()->name, 0, 10), ' ')) }}</span>
+                                </div>
                             </a>
 
                             <ul class="dropdown-menu fsz-sm">
-                                <li><a href="{{ url('/perfil') }}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-user mR-10"></i>
+                                <li><a href="{{ url('/perfil') }}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
+                                            class="ti-user mR-10"></i>
                                         <span>Perfil</span></a></li>
                                 <!--    <li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-email mR-10"></i>
                                         <span>Messagens</span></a></li> -->
@@ -286,9 +325,12 @@
                 </div>
             </main>
 
-            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © GCE 2020 <a href="http://demolayceara.org.br" target="_blank" title="Demolay Ceará"> Demolay Ceará</a>. Todos os direitos
+            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © GCE 2020 <a
+                        href="http://demolayceara.org.br" target="_blank" title="Demolay Ceará"> Demolay Ceará</a>.
+                    Todos os direitos
                     reservados.</span>
-                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="c4c66d0321ac18206eb8bb66-text/javascript"></script>
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"
+                                type="c4c66d0321ac18206eb8bb66-text/javascript"></script>
                 <script type="c4c66d0321ac18206eb8bb66-text/javascript">
                     window.dataLayer = window.dataLayer || [];
 
@@ -311,11 +353,12 @@
             $('#lightgallery').lightGallery();
         });
     </script>
-    <script type="text/javascript" src="<?php echo asset('js/galeria.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo asset('js/galeria.js'); ?>"></script>
     <!-- /Galeria -->
-    <script type="c4c66d0321ac18206eb8bb66-text/javascript" src="<?php echo asset('js/vendor.js') ?>"></script>
-    <script type="c4c66d0321ac18206eb8bb66-text/javascript" src="<?php echo asset('js/bundle.js') ?>"></script>
-    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="c4c66d0321ac18206eb8bb66-|49" defer=""></script>
+    <script type="c4c66d0321ac18206eb8bb66-text/javascript" src="<?php echo asset('js/vendor.js'); ?>"></script>
+    <script type="c4c66d0321ac18206eb8bb66-text/javascript" src="<?php echo asset('js/bundle.js'); ?>"></script>
+    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="c4c66d0321ac18206eb8bb66-|49" defer=""></script>
 </body>
 
 </html>

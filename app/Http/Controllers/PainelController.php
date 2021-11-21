@@ -204,7 +204,7 @@ class PainelController extends Controller
 
     public function prioradoListar()
     {
-        $priorados = Priorado::all();
+        $priorados = Priorado::orderBy('numero' , 'asc')->get();
         return view('painel/priorado/listar')->with('priorados', $priorados);
     }
 

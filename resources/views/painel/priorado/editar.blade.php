@@ -16,7 +16,7 @@ Editar priorado
                 <input type="hidden" name="id" value="{{ $p->id }}">
                 <div class="form-row">
                     <div class="form-group col-md-6"><label for="name">Nome</label>
-                        <input type="text" value="{{ old('nome') }}" class="form-control {{ $errors->has('nome') ? ' border-danger' : '' }}" id="name" name="nome" placeholder="Nome do priorado" required>
+                        <input type="text" value="{{ $p->nome }}" class="form-control {{ $errors->has('nome') ? ' border-danger' : '' }}" id="name" name="nome" placeholder="Nome do priorado" required>
                         @if ($errors->has('nome'))
                         <span class="error text-danger">
                             <strong>{{ $errors->first('nome') }}</strong>
@@ -24,7 +24,7 @@ Editar priorado
                         @endif
                     </div>
                     <div class="form-group col-md-6"><label for="numero">Número</label>
-                        <input type="number" value="{{ old('numero') }}" class="form-control {{ $errors->has('numero') ? ' border-danger' : '' }}" id="numero" name="numero" placeholder="Número" required>
+                        <input type="number" value="{{ $p->numero }}" class="form-control {{ $errors->has('numero') ? ' border-danger' : '' }}" id="numero" name="numero" placeholder="Número" required>
                         @if ($errors->has('numero'))
                         <span class="error text-danger">
                             <strong>{{ $errors->first('numero') }}</strong>
@@ -36,13 +36,13 @@ Editar priorado
                         <select id="regiao_id" name="regiao_id" class="form-control" required>
                             <option value="">Selecione</option>
                         @foreach ($regiaos as $r)
-                        <option value="{{ $r->id }}">
+                        <option value="{{ $r->id }}" @if($r->id == $p->regiao_id) selected @endif>
                             {{ $r->nome }}
                         </option>
                         @endforeach
                     </select></div>
                     <div class="form-group col-md-6"><label for="imagem">Brasão</label>
-                        <input type="file" value="{{ old('imagem') }}" class="form-control" id="imagem" name="imagem" required>
+                        <input type="file" value="{{ old('imagem') }}" class="form-control" id="imagem" name="imagem">
                     </div>
                 </div>
                 <div class="form-group">
