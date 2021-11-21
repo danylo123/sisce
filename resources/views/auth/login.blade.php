@@ -157,11 +157,11 @@
                             <div class="brand-wrapper">
                                 <img src="{{ url('storage/icone/icone.png') }}" alt="logo" class="logo">
                             </div>
-                            <p class="login-card-description">Sistema da Ordem DeMolay Cearence</p>
+                            <p class="login-card-description">Sistema da Ordem DeMolay Cearense</p>
                             <form class="form" id="login-form" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="id_sisdm" class="sr-only">Id SISDM</label>
+                                    <label for="id_sisdm" class="sr-only">ID SISDM</label>
                                     <input type="text" id="id_sisdm" name="id_sisdm" class="form-control"
                                         placeholder="ID SISDM">
                                     @if ($errors->has('id_sisdm'))

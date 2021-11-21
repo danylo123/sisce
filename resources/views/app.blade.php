@@ -183,7 +183,7 @@
                     @if (auth()->user()->nivel == 3)
                         <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
                                     class="icon-holder"><i class="c-black-500 ti-desktop"></i> </span><span
-                                    class="title">Painel ADM</span>
+                                    class="title">Painel adm</span>
                                 <span class="arrow"><i class="ti-angle-right"></i></span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="sidebar-link" href="{{ url('painel/avisos') }}">Avisos</a></li>
