@@ -34,7 +34,6 @@
 
         .login-card-img {
             border-radius: 0;
-            position: absolute;
             width: 100%;
             height: 100%;
             -o-object-fit: cover;
@@ -159,22 +158,23 @@
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="id_sisdm" class="sr-only">ID SISDM</label>
-                                    <input type="text" id="id_sisdm" name="id_sisdm" class="form-control"
+                                    <input type="text" id="id_sisdm" name="id_sisdm" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
                                         placeholder="ID SISDM">
                                     @if ($errors->has('id_sisdm'))
-                                        <span class="error text-danger">
+                                        <div class="invalid-feedback">
                                             <strong>{{ $errors->first('id_sisdm') }}</strong>
-                                        </span>
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Senha</label>
-                                    <input type="password" name="password" id="password" class="form-control"
+                                    <input type="password" name="password" id="password"
+                                        class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
                                         placeholder="Senha">
                                     @if ($errors->has('password'))
-                                        <span class="error text-danger">
+                                        <div class="invalid-feedback">
                                             <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
+                                        </div>
                                     @endif
                                 </div>
                                 <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit"

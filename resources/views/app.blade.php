@@ -203,7 +203,7 @@
 
                     <li class="nav-item"><a class="sidebar-link" href="{{ url('capitulos') }}"><span
                                 class="icon-holder"><img class="c-brown-500"
-                                src="{{ url('storage/icone/demolay.svg') }}" width="14px"></span><span
+                                    src="{{ url('storage/icone/demolay.svg') }}" width="14px"></span><span
                                 class="title">Capitulos</span></a></li>
 
                     <li class="nav-item"><a class="sidebar-link" href="{{ url('priorados') }}"><span
@@ -262,9 +262,9 @@
                     <!--
                     <li class="nav-item"><a class="sidebar-link" href="{{ url('video_aulas') }}"><span class="icon-holder"><i class="c-deep-purple-500 ti-video-clapper"></i> </span><span class="title">Video Aulas</span></a></li>
     -->
-                    <li class="nav-item"><a class="sidebar-link" href="{{ url('ouvidoria') }}"><span
+                    {{-- <li class="nav-item"><a class="sidebar-link" href="{{ url('ouvidoria') }}"><span
                                 class="icon-holder"><i class="c-indigo-500 ti-headphone"></i> </span><span
-                                class="title">Ouvidoria</span></a></li>
+                                class="title">Ouvidoria</span></a></li> --}}
                     <!--
                     <li class="nav-item"><a class="sidebar-link" href=""><span class="icon-holder"><i class="c-light-blue-500 ti-help-alt"></i> </span><span class="title">Dúvidas Frequentes</span></a>
     -->
@@ -293,7 +293,7 @@
                         <li class="dropdown"><a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1"
                                 data-toggle="dropdown">
                                 <div class="peer mR-10"><img class="w-2r bdrs-50p" src="
-                                    @if (auth()->user()->imagem == !null)
+                                     @if (auth()->user()->imagem == !null)
                                     {{ url('storage/users/' . auth()->user()->imagem) }}
                                 @else
                                     {{ url('storage/users/user.png') }}
