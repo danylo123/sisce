@@ -1,4 +1,5 @@
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<h5 class="col-lg-12">Avisos</h5>
+<div id="carouselExampleControls" class="carousel slide col-lg-9" data-ride="carousel">
 
     <ol class="carousel-indicators">
         @foreach( $aviso as $av )
@@ -12,7 +13,7 @@
             <img class="img-responsive" style="max-width:100%;
     max-height:400px;
     width: 100%;
-    height: auto" src=" {{ url('storage/avisos/'.$av->imagem) }}" alt="{{ $av->titulo }}">
+    height: 100%" src=" {{ url('storage/avisos/'.$av->imagem) }}" alt="{{ $av->titulo }}">
             <div class="carousel-caption d-none d-md-block">
                 <h3 class="text-muted bg-transparent">{{ $av->titulo }}</h3>
             </div>

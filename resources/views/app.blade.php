@@ -325,7 +325,7 @@
                 </div>
             </main>
 
-            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © GCE 2020 <a
+            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © GCE 2021 - {{ date("Y") }} <a
                         href="http://demolayceara.org.br" target="_blank" title="Demolay Ceará"> Demolay Ceará</a>.
                     Todos os direitos
                     reservados.</span>
