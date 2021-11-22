@@ -20,7 +20,7 @@ class AcessoAdmin
         $nivel = auth()->user()->nivel;
 
 
-        // Verifica se é gmail.com, caso não se redireciona para a Home Page
+        // Verifica se é administrador, caso não, redireciona para a a página anterior
         if ($nivel <= '2') {
             toastr()->warning('Você não tem permissão para acessar essa página.');
             return redirect()->back();

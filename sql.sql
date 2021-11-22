@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Tempo de geração: 19/11/2021 às 12:16
--- Versão do servidor: 5.6.51-cll-lve
--- Versão do PHP: 7.3.27
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 22-Nov-2021 às 16:32
+-- Versão do servidor: 5.7.31
+-- versão do PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,109 +24,119 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `avisos`
+-- Estrutura da tabela `avisos`
 --
 
-CREATE TABLE `avisos` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `avisos`;
+CREATE TABLE IF NOT EXISTS `avisos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(30) NOT NULL,
   `ativo` int(1) NOT NULL,
   `user_name` varchar(10) NOT NULL,
   `imagem` varchar(100) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Despejando dados para a tabela `avisos`
+-- Extraindo dados da tabela `avisos`
 --
 
 INSERT INTO `avisos` (`id`, `titulo`, `ativo`, `user_name`, `imagem`, `created_at`, `updated_at`) VALUES
 (6, 'Diversidade Demolay', 1, 'Danylo Aly', '6diversidade-demolay.jpeg', '2021-04-16 09:00:27', '2021-08-04 15:34:39'),
 (7, 'Rede Social DMLY', 1, 'Danylo Aly', 'rede-social-d-m-l-y.jpeg', '2021-04-16 09:01:46', '2021-04-16 09:01:46'),
-(8, 'Simpósio Ritualístico', 2, 'Danylo Aly', 'simposio-de-ritualistica.jpeg', '2021-04-16 10:36:49', '2021-04-16 21:25:47');
+(8, 'Simpósio Ritualístico', 2, 'Danylo Aly', '8simpósio-ritualístico.png', '2021-04-16 10:36:49', '2021-11-22 10:00:49');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `capitulos`
+-- Estrutura da tabela `capitulos`
 --
 
-CREATE TABLE `capitulos` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `capitulos`;
+CREATE TABLE IF NOT EXISTS `capitulos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `numero` int(11) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `imagem` varchar(200) DEFAULT NULL,
   `cidade_id` int(11) NOT NULL,
+  `regiao_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `numero` (`numero`),
+  KEY `cidade_id` (`cidade_id`),
+  KEY `regiao_id` (`regiao_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `capitulos`
+-- Extraindo dados da tabela `capitulos`
 --
 
-INSERT INTO `capitulos` (`id`, `numero`, `nome`, `imagem`, `cidade_id`, `created_at`, `updated_at`) VALUES
-(1, 895, 'Guardiões da Fraternidade', 'capitulos/zq1FLFQb0MYOpei6oCPB4RrOTGdOBk2n17QQRxJi.jpeg', 140, '2020-04-10 07:50:10', '2021-03-30 08:05:09'),
-(2, 924, 'Luz da Ribeira dos Icós', 'capitulos/fINxEOm2lNTnX2Jc4SFTo1JAtunQwgTtNXEMLPk3.png', 76, '2020-04-10 12:22:43', '2021-04-17 15:59:43'),
-(3, 155, 'Juazeiro', 'capitulos/SA3nPZNe1irMsylGmAqArl9q6hDWoDMMZIK0JtJb.png', 99, '2021-04-16 09:06:47', '2021-04-17 15:57:29'),
-(8, 896, 'Cavaleiros da Luz II', 'capitulos/TTLK1KcRIDeY2fye4sKaVwarlRrr89Ix0yPe5kHZ.png', 94, '2021-04-16 09:15:20', '2021-04-17 15:57:45'),
-(11, 778, 'Guardiões da Harmonia Varzealegrense', 'capitulos/QJtYJJYsJsJS6BjOR0injjfmNfhcIRf6KfviSL4a.png', 183, '2021-04-16 14:34:15', '2021-04-17 15:59:56'),
-(12, 781, 'Luz do Quinamuiú', 'capitulos/TAy5w9HOJ7xM36gly5tqXQk6G0ckJ8i1lZAXs0EW.png', 172, '2021-04-17 14:34:15', '2021-04-17 16:00:06'),
-(13, 873, 'Príncipe do Vale', 'capitulos/qZkdTxpamQUuj5fHNkx65HVExshUkL9gYAbv94Dw.png', 169, '2021-04-18 14:34:15', '2021-04-17 16:16:52'),
-(14, 629, 'Cidade de Sobral', 'capitulos/w9YWcLMFoSu3v5qsEi1w6um9JlF5skCVOD542p7N.png', 167, '2021-04-19 14:34:15', '2021-04-17 16:00:29'),
-(15, 661, 'Cidade de Senador Pompeu', 'capitulos/xKs40CG3G8ZcgjOMUAvb6vmJrwF6iZs3HAFKSSH4.png', 165, '2021-04-20 14:34:15', '2021-04-17 16:00:48'),
-(16, 789, 'Planalto da Ibiapaba', 'capitulos/PSEJ12boayHaSmsBWWv5P3g0MglSJVevPaTpPPIl.png', 161, '2021-04-21 14:34:15', '2021-04-17 16:01:00'),
-(17, 1008, 'Jovens Templários', 'capitulos/i420d9zm2QlDbdLSWbnDtozXn5rinngLLP2T2zyC.png', 155, '2021-04-22 14:34:15', '2021-04-17 16:01:31'),
-(18, 1026, 'Príncipes da Acácia', 'capitulos/tKVOnMKGGoRF705YnZWyayvQSC7FnwQtrC8b2BvD.png', 151, '2021-04-23 14:34:15', '2021-04-17 16:01:55'),
-(19, 879, 'Príncipe dos Monólitos', 'capitulos/MUu4NO99BxHYUG9WTOfsdRLA0fMpSa1wltWjZEoU.png', 149, '2021-04-24 14:34:15', '2021-04-17 16:02:15'),
-(20, 765, 'Johab Christus Leandro Melo', 'capitulos/f74WgZxabhPIM0BrVGL62YiR2NbWXfgunjPV9M4F.png', 137, '2021-04-25 14:34:15', '2021-04-17 16:02:38'),
-(21, 784, 'Cidade de Pacajus', 'capitulos/BeeRY4Og5x29CVjvKnBR2Gv1MRlTIYUnm9sPWyIc.png', 127, '2021-04-26 14:34:15', '2021-04-17 16:19:22'),
-(22, 335, 'Cidade de Nova Russas', 'capitulos/tnaGykCu5F8lNARKOBLZJVE3ZIZjTyhPi0ZxaJ9q.png', 123, '2021-04-27 14:34:15', '2021-04-17 16:03:01'),
-(23, 1014, 'Luz da Independência', 'capitulos/wtTmtDPWZPMyvCOzBU2Dhu23D1OhcJn6Ia83d8J7.png', 117, '2021-04-28 14:34:15', '2021-04-17 16:19:36'),
-(24, 991, 'Tio José Helder de Mesquita', 'capitulos/T8NS68yV5RlwjimcJKQttTw90r64vPLUMWoW8N61.png', 116, '2021-04-29 14:34:15', '2021-04-17 16:03:37'),
-(25, 439, 'Cidade de Mombaça', 'capitulos/D7r13iLt8WRxWrBpndE7SaCCZvsLHFptauwBD77e.png', 115, '2021-04-30 14:34:15', '2021-04-17 16:03:52'),
-(26, 851, 'Tio Augusto Gomes Leite', 'capitulos/1naYvAlgGoG2KvCJyQzcBptMutHGbMQFfaxrNDrf.png', 111, '2021-05-01 14:34:15', '2021-04-17 16:05:33'),
-(27, 761, 'Guardiões da Juventude Mauritiense', 'capitulos/EmBQZemCUR8IMcaxrRkC9TEj5DoBXpu74V8YkEJ8.png', 109, '2021-05-02 14:34:15', '2021-04-17 16:06:12'),
-(28, 1031, 'Cavaleiros da Paz II', 'capitulos/LIzDTlO6Lf8tQrCbgRpAC9VnvLbLmndllEZisuuy.png', 88, '2021-05-03 14:34:15', '2021-04-17 16:07:33'),
-(29, 102, 'Tio Damião Dãozinho de Melo', 'capitulos/DwNlh5nhPFYraX8AtqCVRXKu9sufgzOayv0WVMTj.png', 80, '2021-05-04 14:34:15', '2021-04-17 16:08:44'),
-(31, 898, 'Força Jovem de Independência', 'capitulos/qEBiOdEMhkLxRJJiz6x3DZv8RogcdcQUPSAuxItN.png', 78, '2021-05-06 14:34:15', '2021-04-17 16:15:08'),
-(32, 279, 'Cidade de Iguatu', 'capitulos/As6vtwxt4FLkQi59FA0ct2gacqOVMBBrXk0aOVJQ.png', 77, '2021-05-07 14:34:15', '2021-04-17 16:09:24'),
-(34, 59, 'Cidade de Fortaleza', 'capitulos/ccan2lTI45BstUW3tbCF5izNeGIavzwoZE8a5IyP.png', 59, '2021-05-09 14:34:15', '2021-04-17 15:40:23'),
-(35, 455, 'Dragão do Mar', 'capitulos/ITZ2JohWkbaExzB8qtF8kFYK187XMwJNLKQIzvgB.png', 59, '2021-05-10 14:34:15', '2021-04-17 16:09:51'),
-(37, 982, 'Guardiões do Santo Graal', 'capitulos/yuyJSnF4tY3Ycxh0xbpAihy1HWrBGndjvLru5ILv.png', 59, '2021-05-12 14:34:15', '2021-04-17 16:10:09'),
-(38, 527, 'Cidade do Crato', 'capitulos/1kmUGBHl4phwLICqeOq4fszs3BGoHAsEZMOH5obp.png', 51, '2021-05-13 14:34:15', '2021-04-17 16:10:22'),
-(39, 1054, 'Guardiões da Independência', 'capitulos/AKq42pvMZvVGflN9jNwrj6J9DToyUSitPYmxOFgN.png', 51, '2021-05-14 14:34:15', '2021-04-17 16:20:13'),
-(40, 831, 'Cidade de Crateús', 'capitulos/6cPiBSgrL7r4svQBvGAAvsBN0psSSSQlxcgeM4Dj.png', 50, '2021-05-15 14:34:15', '2021-04-17 16:10:37'),
-(41, 922, 'Cidade de Cedro', 'capitulos/jQguTi7TLKJx1B6fFbv3vsKhNXK8aakDum39lsnO.png', 45, '2021-05-16 14:34:15', '2021-04-17 16:10:55'),
-(42, 970, 'Cidade de Cascavel', 'capitulos/dggroXlCeZfSd4HPnycg6QVh6Q10GZSBc3h1BWxh.png', 41, '2021-05-17 14:34:15', '2021-04-17 16:11:14'),
-(43, 958, 'Cavaleiros das Guerras Bárbaras', 'capitulos/3E14744HNMmocnzZeK5sGNWY4jTrCw295tamHBkc.png', 39, '2021-05-18 14:34:15', '2021-04-17 16:20:31'),
-(44, 816, 'Juventude Fraterna Canindeense', 'capitulos/o7kUerw3n1SqoU6wsANwBpVyAviCXTRBEtgKZ1Jd.png', 34, '2021-05-19 14:34:15', '2021-04-17 16:11:37'),
-(45, 695, 'Irmão Thiago Santiago Bezerra', 'capitulos/ONXjWLpmgbZPqiGZ8g0lkdOPmTWAa1Na0d6xSwgj.png', 33, '2021-05-20 14:34:15', '2021-04-17 16:11:54'),
-(46, 1013, 'Cavaleiros de Camocim', 'capitulos/fZexoEyQNqa2phAJjVLxyhn9o8zKATZd1kKToIKC.png', 32, '2021-05-21 14:34:15', '2021-04-17 16:12:13'),
-(47, 864, 'Defensores da Igualdade Brejosantense', 'capitulos/pD5Weu50zT4j39PeZaZwoFuM5in89sApOlKMYid3.png', 31, '2021-05-22 14:34:15', '2021-04-17 16:12:29'),
-(48, 899, 'Príncipe do Amor', 'capitulos/wwXuviXmF4gC8NzEWQGGtwoIunm8MqNyK6qnZ837.png', 30, '2021-05-23 14:34:15', '2021-04-17 16:12:56'),
-(49, 891, 'Tio Geraldo Luiz Gonzaga', 'capitulos/iGtCPuZOyUsfRsZWiEQqScyTTC8qfhqCcXuoUIic.png', 25, '2021-05-24 14:34:15', '2021-04-17 16:13:09'),
-(50, 835, 'Verdes Canaviais Barbalhense', 'capitulos/gZjBIWp5vFsmfa5upRtHzXU89Y8cWDqoh76qqtMv.png', 23, '2021-05-25 14:34:15', '2021-04-17 16:13:44'),
-(51, 908, 'Tio Apolônio Chagas Gabriel', 'capitulos/xgoArC8fGeF97UAawf3sw4Au9wUjYKtByoqOBRQI.png', 20, '2021-05-26 14:34:15', '2021-04-17 16:14:01'),
-(52, 986, 'Cidade de Acopiara', 'capitulos/THfvVX6VzmRQgDKBSgiO3adXyIqO3DAz3F0VRmjF.png', 4, '2021-05-27 14:34:15', '2021-04-17 16:14:15');
+INSERT INTO `capitulos` (`id`, `numero`, `nome`, `imagem`, `cidade_id`, `regiao_id`, `created_at`, `updated_at`) VALUES
+(1, 895, 'Guardiões da Fraternidade', 'capitulos/zq1FLFQb0MYOpei6oCPB4RrOTGdOBk2n17QQRxJi.jpeg', 140, 7, '2020-04-10 07:50:10', '2021-11-21 08:21:24'),
+(2, 924, 'Luz da Ribeira dos Icós', 'capitulos/fINxEOm2lNTnX2Jc4SFTo1JAtunQwgTtNXEMLPk3.png', 76, 1, '2020-04-10 12:22:43', '2021-04-17 15:59:43'),
+(3, 155, 'Juazeiro', 'capitulos/SA3nPZNe1irMsylGmAqArl9q6hDWoDMMZIK0JtJb.png', 99, 1, '2021-04-16 09:06:47', '2021-04-17 15:57:29'),
+(8, 896, 'Cavaleiros da Luz II', 'capitulos/TTLK1KcRIDeY2fye4sKaVwarlRrr89Ix0yPe5kHZ.png', 94, 1, '2021-04-16 09:15:20', '2021-04-17 15:57:45'),
+(11, 778, 'Guardiões da Harmonia Varzealegrense', 'capitulos/QJtYJJYsJsJS6BjOR0injjfmNfhcIRf6KfviSL4a.png', 183, 1, '2021-04-16 14:34:15', '2021-04-17 15:59:56'),
+(12, 781, 'Luz do Quinamuiú', 'capitulos/TAy5w9HOJ7xM36gly5tqXQk6G0ckJ8i1lZAXs0EW.png', 172, 1, '2021-04-17 14:34:15', '2021-04-17 16:00:06'),
+(13, 873, 'Príncipe do Vale', 'capitulos/qZkdTxpamQUuj5fHNkx65HVExshUkL9gYAbv94Dw.png', 169, 1, '2021-04-18 14:34:15', '2021-04-17 16:16:52'),
+(14, 629, 'Cidade de Sobral', 'capitulos/w9YWcLMFoSu3v5qsEi1w6um9JlF5skCVOD542p7N.png', 167, 1, '2021-04-19 14:34:15', '2021-04-17 16:00:29'),
+(15, 661, 'Cidade de Senador Pompeu', 'capitulos/xKs40CG3G8ZcgjOMUAvb6vmJrwF6iZs3HAFKSSH4.png', 165, 1, '2021-04-20 14:34:15', '2021-04-17 16:00:48'),
+(16, 789, 'Planalto da Ibiapaba', 'capitulos/PSEJ12boayHaSmsBWWv5P3g0MglSJVevPaTpPPIl.png', 161, 1, '2021-04-21 14:34:15', '2021-04-17 16:01:00'),
+(17, 1008, 'Jovens Templários', 'capitulos/i420d9zm2QlDbdLSWbnDtozXn5rinngLLP2T2zyC.png', 155, 1, '2021-04-22 14:34:15', '2021-04-17 16:01:31'),
+(18, 1026, 'Príncipes da Acácia', 'capitulos/tKVOnMKGGoRF705YnZWyayvQSC7FnwQtrC8b2BvD.png', 151, 1, '2021-04-23 14:34:15', '2021-04-17 16:01:55'),
+(19, 879, 'Príncipe dos Monólitos', 'capitulos/MUu4NO99BxHYUG9WTOfsdRLA0fMpSa1wltWjZEoU.png', 149, 1, '2021-04-24 14:34:15', '2021-04-17 16:02:15'),
+(20, 765, 'Johab Christus Leandro Melo', 'capitulos/f74WgZxabhPIM0BrVGL62YiR2NbWXfgunjPV9M4F.png', 137, 1, '2021-04-25 14:34:15', '2021-04-17 16:02:38'),
+(21, 784, 'Cidade de Pacajus', 'capitulos/BeeRY4Og5x29CVjvKnBR2Gv1MRlTIYUnm9sPWyIc.png', 127, 1, '2021-04-26 14:34:15', '2021-04-17 16:19:22'),
+(22, 335, 'Cidade de Nova Russas', 'capitulos/tnaGykCu5F8lNARKOBLZJVE3ZIZjTyhPi0ZxaJ9q.png', 123, 1, '2021-04-27 14:34:15', '2021-04-17 16:03:01'),
+(23, 1014, 'Luz da Independência', 'capitulos/wtTmtDPWZPMyvCOzBU2Dhu23D1OhcJn6Ia83d8J7.png', 117, 1, '2021-04-28 14:34:15', '2021-04-17 16:19:36'),
+(24, 991, 'Tio José Helder de Mesquita', 'capitulos/T8NS68yV5RlwjimcJKQttTw90r64vPLUMWoW8N61.png', 116, 1, '2021-04-29 14:34:15', '2021-04-17 16:03:37'),
+(25, 439, 'Cidade de Mombaça', 'capitulos/D7r13iLt8WRxWrBpndE7SaCCZvsLHFptauwBD77e.png', 115, 1, '2021-04-30 14:34:15', '2021-04-17 16:03:52'),
+(26, 851, 'Tio Augusto Gomes Leite', 'capitulos/1naYvAlgGoG2KvCJyQzcBptMutHGbMQFfaxrNDrf.png', 111, 1, '2021-05-01 14:34:15', '2021-04-17 16:05:33'),
+(27, 761, 'Guardiões da Juventude Mauritiense', 'capitulos/EmBQZemCUR8IMcaxrRkC9TEj5DoBXpu74V8YkEJ8.png', 109, 1, '2021-05-02 14:34:15', '2021-04-17 16:06:12'),
+(28, 1031, 'Cavaleiros da Paz II', 'capitulos/LIzDTlO6Lf8tQrCbgRpAC9VnvLbLmndllEZisuuy.png', 88, 1, '2021-05-03 14:34:15', '2021-04-17 16:07:33'),
+(29, 102, 'Tio Damião Dãozinho de Melo', 'capitulos/DwNlh5nhPFYraX8AtqCVRXKu9sufgzOayv0WVMTj.png', 80, 1, '2021-05-04 14:34:15', '2021-04-17 16:08:44'),
+(31, 898, 'Força Jovem de Independência', 'capitulos/qEBiOdEMhkLxRJJiz6x3DZv8RogcdcQUPSAuxItN.png', 78, 1, '2021-05-06 14:34:15', '2021-04-17 16:15:08'),
+(32, 279, 'Cidade de Iguatu', 'capitulos/As6vtwxt4FLkQi59FA0ct2gacqOVMBBrXk0aOVJQ.png', 77, 1, '2021-05-07 14:34:15', '2021-04-17 16:09:24'),
+(34, 59, 'Cidade de Fortaleza', 'capitulos/ccan2lTI45BstUW3tbCF5izNeGIavzwoZE8a5IyP.png', 59, 1, '2021-05-09 14:34:15', '2021-11-20 15:29:13'),
+(35, 455, 'Dragão do Mar', 'capitulos/ITZ2JohWkbaExzB8qtF8kFYK187XMwJNLKQIzvgB.png', 59, 1, '2021-05-10 14:34:15', '2021-04-17 16:09:51'),
+(37, 982, 'Guardiões do Santo Graal', 'capitulos/yuyJSnF4tY3Ycxh0xbpAihy1HWrBGndjvLru5ILv.png', 59, 1, '2021-05-12 14:34:15', '2021-04-17 16:10:09'),
+(38, 527, 'Cidade do Crato', 'capitulos/1kmUGBHl4phwLICqeOq4fszs3BGoHAsEZMOH5obp.png', 51, 1, '2021-05-13 14:34:15', '2021-04-17 16:10:22'),
+(39, 1054, 'Guardiões da Independência', 'capitulos/AKq42pvMZvVGflN9jNwrj6J9DToyUSitPYmxOFgN.png', 51, 1, '2021-05-14 14:34:15', '2021-04-17 16:20:13'),
+(40, 831, 'Cidade de Crateús', 'capitulos/6cPiBSgrL7r4svQBvGAAvsBN0psSSSQlxcgeM4Dj.png', 50, 1, '2021-05-15 14:34:15', '2021-04-17 16:10:37'),
+(41, 922, 'Cidade de Cedro', 'capitulos/jQguTi7TLKJx1B6fFbv3vsKhNXK8aakDum39lsnO.png', 45, 1, '2021-05-16 14:34:15', '2021-04-17 16:10:55'),
+(42, 970, 'Cidade de Cascavel', 'capitulos/dggroXlCeZfSd4HPnycg6QVh6Q10GZSBc3h1BWxh.png', 41, 1, '2021-05-17 14:34:15', '2021-04-17 16:11:14'),
+(43, 958, 'Cavaleiros das Guerras Bárbaras', 'capitulos/3E14744HNMmocnzZeK5sGNWY4jTrCw295tamHBkc.png', 39, 1, '2021-05-18 14:34:15', '2021-04-17 16:20:31'),
+(44, 816, 'Juventude Fraterna Canindeense', 'capitulos/o7kUerw3n1SqoU6wsANwBpVyAviCXTRBEtgKZ1Jd.png', 34, 1, '2021-05-19 14:34:15', '2021-04-17 16:11:37'),
+(45, 695, 'Irmão Thiago Santiago Bezerra', 'capitulos/ONXjWLpmgbZPqiGZ8g0lkdOPmTWAa1Na0d6xSwgj.png', 33, 1, '2021-05-20 14:34:15', '2021-04-17 16:11:54'),
+(46, 1013, 'Cavaleiros de Camocim', 'capitulos/fZexoEyQNqa2phAJjVLxyhn9o8zKATZd1kKToIKC.png', 32, 1, '2021-05-21 14:34:15', '2021-04-17 16:12:13'),
+(47, 864, 'Defensores da Igualdade Brejosantense', 'capitulos/pD5Weu50zT4j39PeZaZwoFuM5in89sApOlKMYid3.png', 31, 1, '2021-05-22 14:34:15', '2021-04-17 16:12:29'),
+(48, 899, 'Príncipe do Amor', 'capitulos/wwXuviXmF4gC8NzEWQGGtwoIunm8MqNyK6qnZ837.png', 30, 1, '2021-05-23 14:34:15', '2021-04-17 16:12:56'),
+(49, 891, 'Tio Geraldo Luiz Gonzaga', 'capitulos/iGtCPuZOyUsfRsZWiEQqScyTTC8qfhqCcXuoUIic.png', 25, 1, '2021-05-24 14:34:15', '2021-04-17 16:13:09'),
+(50, 835, 'Verdes Canaviais Barbalhense', 'capitulos/gZjBIWp5vFsmfa5upRtHzXU89Y8cWDqoh76qqtMv.png', 23, 1, '2021-05-25 14:34:15', '2021-04-17 16:13:44'),
+(51, 908, 'Tio Apolônio Chagas Gabriel', 'capitulos/xgoArC8fGeF97UAawf3sw4Au9wUjYKtByoqOBRQI.png', 20, 1, '2021-05-26 14:34:15', '2021-04-17 16:14:01'),
+(52, 986, 'Cidade de Acopiara', 'capitulos/THfvVX6VzmRQgDKBSgiO3adXyIqO3DAz3F0VRmjF.png', 4, 1, '2021-05-27 14:34:15', '2021-04-17 16:14:15');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cidades`
+-- Estrutura da tabela `cidades`
 --
 
-CREATE TABLE `cidades` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `cidades`;
+CREATE TABLE IF NOT EXISTS `cidades` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `estado` varchar(10) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `cidades`
+-- Extraindo dados da tabela `cidades`
 --
 
 INSERT INTO `cidades` (`id`, `nome`, `estado`, `created_at`, `updated_at`) VALUES
@@ -319,26 +328,30 @@ INSERT INTO `cidades` (`id`, `nome`, `estado`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `documentos`
+-- Estrutura da tabela `documentos`
 --
 
-CREATE TABLE `documentos` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `documentos`;
+CREATE TABLE IF NOT EXISTS `documentos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
   `arquivo` varchar(200) NOT NULL,
   `pasta_documento_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pasta_documentos_id` (`pasta_documento_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `galerias`
+-- Estrutura da tabela `galerias`
 --
 
-CREATE TABLE `galerias` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `galerias`;
+CREATE TABLE IF NOT EXISTS `galerias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
   `cargo` varchar(100) DEFAULT NULL,
   `imagem` varchar(200) NOT NULL,
@@ -346,11 +359,13 @@ CREATE TABLE `galerias` (
   `periodo` varchar(200) NOT NULL,
   `tipo_galeria_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tipo_galeria_id` (`tipo_galeria_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `galerias`
+-- Extraindo dados da tabela `galerias`
 --
 
 INSERT INTO `galerias` (`id`, `nome`, `cargo`, `imagem`, `nome_gestao`, `periodo`, `tipo_galeria_id`, `created_at`, `updated_at`) VALUES
@@ -417,45 +432,52 @@ INSERT INTO `galerias` (`id`, `nome`, `cargo`, `imagem`, `nome_gestao`, `periodo
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `midias`
+-- Estrutura da tabela `midias`
 --
 
-CREATE TABLE `midias` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `midias`;
+CREATE TABLE IF NOT EXISTS `midias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
   `arquivo` varchar(200) NOT NULL,
   `pasta_midia_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pasta_midia_id` (`pasta_midia_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `migrations`
+-- Estrutura da tabela `migrations`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `password_resets`
+-- Estrutura da tabela `password_resets`
 --
 
-CREATE TABLE `password_resets` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(200) NOT NULL,
   `token` varchar(200) NOT NULL,
-  `created_at` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
--- Despejando dados para a tabela `password_resets`
+-- Extraindo dados da tabela `password_resets`
 --
 
 INSERT INTO `password_resets` (`id`, `email`, `token`, `created_at`) VALUES
@@ -464,20 +486,22 @@ INSERT INTO `password_resets` (`id`, `email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pasta_documentos`
+-- Estrutura da tabela `pasta_documentos`
 --
 
-CREATE TABLE `pasta_documentos` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `pasta_documentos`;
+CREATE TABLE IF NOT EXISTS `pasta_documentos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
   `tipo` int(11) NOT NULL,
   `status` varchar(10) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `pasta_documentos`
+-- Extraindo dados da tabela `pasta_documentos`
 --
 
 INSERT INTO `pasta_documentos` (`id`, `titulo`, `tipo`, `status`, `created_at`, `updated_at`) VALUES
@@ -487,32 +511,91 @@ INSERT INTO `pasta_documentos` (`id`, `titulo`, `tipo`, `status`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pasta_midias`
+-- Estrutura da tabela `pasta_midias`
 --
 
-CREATE TABLE `pasta_midias` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `pasta_midias`;
+CREATE TABLE IF NOT EXISTS `pasta_midias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
   `status` varchar(10) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tipo_galerias`
+-- Estrutura da tabela `priorados`
 --
 
-CREATE TABLE `tipo_galerias` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `priorados`;
+CREATE TABLE IF NOT EXISTS `priorados` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `numero` int(11) NOT NULL,
+  `imagem` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `regiao_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `regiao_id` (`regiao_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `priorados`
+--
+
+INSERT INTO `priorados` (`id`, `nome`, `numero`, `imagem`, `regiao_id`, `created_at`, `updated_at`) VALUES
+(1, 'Nobres Cavaleiros do Vale do Jaguaribe', 195, 'priorados/KxAxGQcbMWR3ahuo6hCWcWvfRw3dIh22vDWMoRQs.jpeg', 7, '2021-11-20 16:53:54', '2021-11-21 13:06:27');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `regiaos`
+--
+
+DROP TABLE IF EXISTS `regiaos`;
+CREATE TABLE IF NOT EXISTS `regiaos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `regiaos`
+--
+
+INSERT INTO `regiaos` (`id`, `nome`, `created_at`, `updated_at`) VALUES
+(1, '1ª Região - Metropolitana', '2021-11-19 16:56:09', '2021-11-19 16:56:09'),
+(2, '2º Região - Centro Sul', '2021-11-19 16:56:09', '2021-11-19 16:56:09'),
+(3, '3ª Região - Sertão do Cariri', '2021-11-19 16:56:09', '2021-11-19 16:56:09'),
+(4, '4º Região - Vale do Cariri', '2021-11-19 16:56:09', '2021-11-19 16:56:09'),
+(5, '5ª Região - Sertão Central', '2021-11-19 16:56:09', '2021-11-19 16:56:09'),
+(6, '6ª Região - Inhamuns e Sertão de Crateús', '2021-11-19 16:56:09', '2021-11-19 16:56:09'),
+(7, '7ª Região - Vale do Jaguaribe', '2021-11-19 16:56:09', '2021-11-19 16:56:09'),
+(8, '8ª Região - Sertão de Canindé', '2021-11-19 16:56:09', '2021-11-19 16:56:09');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tipo_galerias`
+--
+
+DROP TABLE IF EXISTS `tipo_galerias`;
+CREATE TABLE IF NOT EXISTS `tipo_galerias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `tipo_galerias`
+-- Extraindo dados da tabela `tipo_galerias`
 --
 
 INSERT INTO `tipo_galerias` (`id`, `nome`, `created_at`, `updated_at`) VALUES
@@ -527,27 +610,30 @@ INSERT INTO `tipo_galerias` (`id`, `nome`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `transparencias`
+-- Estrutura da tabela `transparencias`
 --
 
-CREATE TABLE `transparencias` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `transparencias`;
+CREATE TABLE IF NOT EXISTS `transparencias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(200) NOT NULL,
   `ano` int(4) NOT NULL,
   `arquivo` varchar(250) NOT NULL,
   `tipo` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `users`
+-- Estrutura da tabela `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_sisdm` int(11) NOT NULL,
   `email` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -558,20 +644,23 @@ CREATE TABLE `users` (
   `status` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_sisdm` (`id_sisdm`),
+  KEY `capitulo_id` (`capitulo_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=960 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `users`
+-- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `id_sisdm`, `email`, `password`, `imagem`, `capitulo_id`, `nivel`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Danylo Alysson Dias Aquino', 42712, 'danyloalyson1@gmail.com', '$2y$10$zoiAPJ6kK3bXZYptFQ7QCeZLaW3nGCErtzZjQhmq7gB20ia66rv52', '1-danylo-alysson-dias-aquino.jpeg', 1, 3, 'ativo', '7thsX9hazaLpwoAkb2nsBHIaphM4e8GqdXnzQudmRVEpyrRXH6eG4FbsOfsZ', '2020-04-10 00:20:10', NULL),
+(1, 'Danylo Alysson Dias Aquino', 42712, 'danyloalyson1@gmail.com', '$2y$10$zoiAPJ6kK3bXZYptFQ7QCeZLaW3nGCErtzZjQhmq7gB20ia66rv52', '1-danylo-alysson-dias-aquino.jpeg', 1, 3, 'ativo', 'V0sBbN99iCOFACQ1k3accRgDPC0aLqMekU9gZJeyqHuSHCa9RSNw63Ufd3Rq', '2020-04-10 00:20:10', NULL),
 (2, 'Felipe Bandeira', 13458, 'felipbandeira@hotmail.com', '$2y$10$ZzY4RvLLXgtjDshfp6MDSe9Z9vxtfEP1CTdF7/MlKCDZcsDLyWgoi', '22felipe-bandeira.png', 3, 3, 'ativo', 'dgY0mXwCcwxnmtHRurOllMIghBc66ZnRooYkwsBqjlB0AtoQt40mUxnoeQb0', '2020-04-27 07:00:00', '2021-04-18 01:47:50'),
 (3, 'Andres Silva Alves', 74024, 'andresilva01alves@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 52, 1, 'ativo', 'EwGVyzWyMm0nvETmKA2SEf457bzdTbZDiqjH6Oi0JB5Boz4nlEORuKhoHvsm', '2021-04-15 22:46:59', NULL),
 (4, 'Brendo Alencar Barbosa', 74035, 'brendoalencar2@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 52, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (5, 'Carlos Augusto Teixeira Alves', 74030, 'gangueextreme@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 52, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
-(6, 'Carlos Eduardo Teixeira Alves', 74031, 'gamercraazy09@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 52, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
+(6, 'Carlos Eduardo Teixeira Alves', 74031, 'gamercraazy09@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 52, 1, 'ativo', '7VjLg6o681VA09phwncSGDGQCoNhfFPiGmNsQAHPTz5YQl8s1c51JwmXgrzr', '2021-04-15 22:46:59', NULL),
 (7, 'Cauan Alves Pinho', 78342, 'cauanalves010@hotmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 52, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (8, 'Davy Fernandes Vidal', 78341, 'davyvidalcold11@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 52, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (9, 'Diego Silva Ferreira', 74029, 'ferreiradiego72831@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 52, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
@@ -827,9 +916,9 @@ INSERT INTO `users` (`id`, `name`, `id_sisdm`, `email`, `password`, `imagem`, `c
 (259, 'Mateus Diniz de Oliveira', 83278, 'mateusdiniz.if@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (260, 'Matheus do Nascimento Parnaíba', 60393, 'matheusparnaiba37@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (261, 'Mário Carneiro de Freitas Neto', 70724, 'mario.neto68@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
-(262, 'Pedro Arthur Silva de Souza', 70725, 'pedroarthur2112@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
-(263, 'Pedro Henrique Alves das Neves', 65458, 'claudivan15014_matos@hotmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL);
+(262, 'Pedro Arthur Silva de Souza', 70725, 'pedroarthur2112@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL);
 INSERT INTO `users` (`id`, `name`, `id_sisdm`, `email`, `password`, `imagem`, `capitulo_id`, `nivel`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(263, 'Pedro Henrique Alves das Neves', 65458, 'claudivan15014_matos@hotmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (264, 'Rafael Thomaz de Lima', 87611, 'thomazrafael82@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (265, 'Raimundo Gonçalves de Sousa Júnior', 87612, 'dream.plus@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (266, 'Rosivan Bezerra das Chagas Filho', 83279, 'rosivanfilho05@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 41, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
@@ -1092,9 +1181,9 @@ INSERT INTO `users` (`id`, `name`, `id_sisdm`, `email`, `password`, `imagem`, `c
 (523, 'Wescley de Souza Lima', 2489, 'wescleyce@hotmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 32, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (524, 'Lucas Moraes Soraes', 22929, 'lucasmoraes19981@hotmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 31, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (525, 'Jean Michel Dantas Gomes', 19601, 'jean_michel_demolay@hotmail.com', '$2y$10$h9AH7diCiEoWf5waFb4o/uP4ippYRmSXP5QLrG4y.BXxCjr5EKBUi', '', 29, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
-(526, 'Thiago Rocha Alves', 89238, 'thiagodemariarocha@gmail.com', '$2y$10$KnOwU//82lwwOokJHB7GnOTN7Q0NSwEBJGF1m4AXTFBk1JkvqV48q', '', 29, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
-(527, 'Carlos Eduardo Israel Monteiro', 85441, 'cadu1intel@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 29, 1, 'ativo', '', '2021-04-15 22:46:59', NULL);
+(526, 'Thiago Rocha Alves', 89238, 'thiagodemariarocha@gmail.com', '$2y$10$KnOwU//82lwwOokJHB7GnOTN7Q0NSwEBJGF1m4AXTFBk1JkvqV48q', '', 29, 1, 'ativo', '', '2021-04-15 22:46:59', NULL);
 INSERT INTO `users` (`id`, `name`, `id_sisdm`, `email`, `password`, `imagem`, `capitulo_id`, `nivel`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(527, 'Carlos Eduardo Israel Monteiro', 85441, 'cadu1intel@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 29, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (528, 'Emanuel Herbert Barbosa de Moura', 78327, 'emanuel-ip@hotmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 29, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (529, 'Eneias Raul Santana da Silva', 67669, 'raulsantana05@hotmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 29, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (530, 'Expedito Dantas Moreira Bisneto', 40919, 'exp.sukus@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 29, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
@@ -1355,9 +1444,9 @@ INSERT INTO `users` (`id`, `name`, `id_sisdm`, `email`, `password`, `imagem`, `c
 (785, 'Francisco Ferdinan Aguiar Frota Junior', 84257, 'ferdinanjunior5051@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (786, 'Gabriel de Lira Pereira', 81440, 'liragabriel21@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (787, 'Heron Santana do Nascimento', 81445, 'haroldonascimento@bol.com.br', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
-(788, 'Matheus Parente Arruda', 87826, 'matheuslc123456789@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
-(789, 'Miguel Alves de Lira Pereira', 81441, 'miguellira522@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL);
+(788, 'Matheus Parente Arruda', 87826, 'matheuslc123456789@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL);
 INSERT INTO `users` (`id`, `name`, `id_sisdm`, `email`, `password`, `imagem`, `capitulo_id`, `nivel`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(789, 'Miguel Alves de Lira Pereira', 81441, 'miguellira522@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (790, 'Ocione Moreira Lima', 87823, 'ocionemoreira2018@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (791, 'Pedro Lucas Melo Pereira', 81442, 'pedrolucasmello709@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (792, 'Thiago Luiz Melo Pereira', 87824, 'luuti2019@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 14, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
@@ -1506,7 +1595,7 @@ INSERT INTO `users` (`id`, `name`, `id_sisdm`, `email`, `password`, `imagem`, `c
 (935, 'Carlos Daniel Morais Moura', 46362, 'cael_morais@hotmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 1, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (936, 'Davi Eduardo de Carvalho', 65156, 'daviescdm@outlook.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 1, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (937, 'Davi Erik Morais de Aquino', 46669, 'davierik123@outlook.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 1, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
-(938, 'Denison Afonso Cardoso', 46349, 'denisonafonsocardoso@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 1, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
+(938, 'Denison Afonso Cardoso', 46349, 'denisonafonsocardoso@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 1, 1, 'desativado', '', '2021-04-15 22:46:59', '2021-11-20 13:36:24'),
 (939, 'Elder Vinícius Alves de Lima', 46346, 'viniciusalves1902@hotmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 1, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (940, 'Filipe Medereiros Sanguinetti Júnior', 74390, 'fmsjr05@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 1, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
 (941, 'Gildo Diógenes Neto', 43671, 'gildo44@gmail.com', '$2y$10$4RjXHyyZedh3hP22zxg8oeBpB06k2N6ul/kE50eVlk137MJXn/Iwy', '', 1, 1, 'ativo', '', '2021-04-15 22:46:59', NULL),
@@ -1530,206 +1619,42 @@ INSERT INTO `users` (`id`, `name`, `id_sisdm`, `email`, `password`, `imagem`, `c
 (959, 'Victor Emanuel Siqueira Conde', 56686, 'victorsiqueirasc@gmail.com', '$2y$10$Hg5GAGTJ7yNyOXjTGRq3qefGY8trXEDIPv6.H8uW60X4GgMPvlp32', NULL, 25, 3, 'ativo', 'gWmjuJRT0NEfKqUniPSgKgn9OEvl51Z7KmhbtNDSPNtT9xEN6NzqEb6yK4L0', '2021-04-18 01:51:06', '2021-04-18 01:51:06');
 
 --
--- Índices de tabelas apagadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Índices de tabela `avisos`
---
-ALTER TABLE `avisos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `capitulos`
+-- Limitadores para a tabela `capitulos`
 --
 ALTER TABLE `capitulos`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `numero` (`numero`),
-  ADD KEY `cidade_id` (`cidade_id`);
+  ADD CONSTRAINT `capitulos_ibfk_1` FOREIGN KEY (`cidade_id`) REFERENCES `cidades` (`id`),
+  ADD CONSTRAINT `capitulos_ibfk_2` FOREIGN KEY (`regiao_id`) REFERENCES `regiaos` (`id`);
 
 --
--- Índices de tabela `cidades`
---
-ALTER TABLE `cidades`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `documentos`
---
-ALTER TABLE `documentos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pasta_documentos_id` (`pasta_documento_id`);
-
---
--- Índices de tabela `galerias`
---
-ALTER TABLE `galerias`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tipo_galeria_id` (`tipo_galeria_id`);
-
---
--- Índices de tabela `midias`
---
-ALTER TABLE `midias`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pasta_midia_id` (`pasta_midia_id`);
-
---
--- Índices de tabela `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `pasta_documentos`
---
-ALTER TABLE `pasta_documentos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `pasta_midias`
---
-ALTER TABLE `pasta_midias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `tipo_galerias`
---
-ALTER TABLE `tipo_galerias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `transparencias`
---
-ALTER TABLE `transparencias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_sisdm` (`id_sisdm`),
-  ADD KEY `capitulo_id` (`capitulo_id`);
-
---
--- AUTO_INCREMENT de tabelas apagadas
---
-
---
--- AUTO_INCREMENT de tabela `avisos`
---
-ALTER TABLE `avisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT de tabela `capitulos`
---
-ALTER TABLE `capitulos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
-
---
--- AUTO_INCREMENT de tabela `cidades`
---
-ALTER TABLE `cidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
-
---
--- AUTO_INCREMENT de tabela `documentos`
---
-ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `galerias`
---
-ALTER TABLE `galerias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
-
---
--- AUTO_INCREMENT de tabela `midias`
---
-ALTER TABLE `midias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `password_resets`
---
-ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de tabela `pasta_documentos`
---
-ALTER TABLE `pasta_documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT de tabela `pasta_midias`
---
-ALTER TABLE `pasta_midias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `tipo_galerias`
---
-ALTER TABLE `tipo_galerias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de tabela `transparencias`
---
-ALTER TABLE `transparencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=960;
-
---
--- Restrições para dumps de tabelas
---
-
---
--- Restrições para tabelas `capitulos`
---
-ALTER TABLE `capitulos`
-  ADD CONSTRAINT `capitulos_ibfk_1` FOREIGN KEY (`cidade_id`) REFERENCES `cidades` (`id`);
-
---
--- Restrições para tabelas `documentos`
+-- Limitadores para a tabela `documentos`
 --
 ALTER TABLE `documentos`
   ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`pasta_documento_id`) REFERENCES `pasta_documentos` (`id`);
 
 --
--- Restrições para tabelas `galerias`
+-- Limitadores para a tabela `galerias`
 --
 ALTER TABLE `galerias`
   ADD CONSTRAINT `galerias_ibfk_1` FOREIGN KEY (`tipo_galeria_id`) REFERENCES `tipo_galerias` (`id`);
 
 --
--- Restrições para tabelas `midias`
+-- Limitadores para a tabela `midias`
 --
 ALTER TABLE `midias`
   ADD CONSTRAINT `midias_ibfk_1` FOREIGN KEY (`pasta_midia_id`) REFERENCES `pasta_midias` (`id`);
 
 --
--- Restrições para tabelas `users`
+-- Limitadores para a tabela `priorados`
+--
+ALTER TABLE `priorados`
+  ADD CONSTRAINT `priorados_ibfk_1` FOREIGN KEY (`regiao_id`) REFERENCES `regiaos` (`id`);
+
+--
+-- Limitadores para a tabela `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`capitulo_id`) REFERENCES `capitulos` (`id`);
