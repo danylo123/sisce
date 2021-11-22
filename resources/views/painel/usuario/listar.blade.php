@@ -17,7 +17,11 @@
                     <form action="{{ route('painel.usuarios-search') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-row">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-2">
+                                <input type="text" name="id_sisdm" @if (isset($data['id_sisdm'])) value="{{ $data['id_sisdm'] }}" @endif id="id_sisdm"
+                                    class="form-control" placeholder="ID">
+                            </div>
+                            <div class="form-group col-md-3">
                                 <input type="text" name="name" @if (isset($data['name'])) value="{{ $data['name'] }}" @endif id="name" class="form-control"
                                     placeholder="Nome">
                             </div>
@@ -26,13 +30,16 @@
                                     <option value="">Capitulo</option>
                                     @foreach ($capitulo as $capitulo)
                                         <option value="{{ $capitulo->id }}" @if (isset($data['capitulo_id'])) @if ($data['capitulo_id'] == $capitulo->id) selected @endif @endif>
-                                            {{ $capitulo->nome }}</option>
+                                            {{ $capitulo->nome }} N° {{ $capitulo->numero }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
-                                <input type="text" name="email" @if (isset($data['email'])) value="{{ $data['email'] }}" @endif class="form-control"
-                                    placeholder="E-mail">
+                            <div class="form-group col-md-2">
+                                <select class="form-control" name="status" id="status">
+                                    <option value="">Status</option>
+                                    <option value="ativo" @if (isset($data['status'])) @if ($data['status'] == 'ativo') selected @endif @endif>Ativo</option>
+                                    <option value="desativado" @if (isset($data['status'])) @if ($data['status'] == 'desativado') selected @endif @endif>Inativo</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-2">
                                 <button type="submit" class="form-control btn btn-primary">Filtrar</button>
@@ -40,7 +47,7 @@
                         </div>
                     </form>
 
-                    <div class="row table-responsive">                        
+                    <div class="row table-responsive">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -59,7 +66,7 @@
                                         <td>{{ $c->name }}</td>
                                         <td>{{ $c->email }}</td>
                                         <td><span data-toggle="tooltip" data-placement="top"
-                                                title="{{ $c->capitulo->cidade->nome }}">{{ $c->capitulo->nome }}</span>
+                                                title="{{ $c->capitulo->cidade->nome }}">{{ $c->capitulo->nome }} N° {{ $c->capitulo->numero }}</span>
                                         </td>
                                         <td>
                                             @if ($c->status == 'ativo')
@@ -99,7 +106,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>                            
+                            </tbody>
                         </table>
                         {{-- Pagination --}}
                         <div class="d-flex justify-content-center">

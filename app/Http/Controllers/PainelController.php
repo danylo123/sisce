@@ -105,16 +105,20 @@ class PainelController extends Controller
     public function usuarioSearch(Request $request)
     {
         $data = $request->except('_token');
+        $id_sisdm = $request->id_sisdm;
         $nome = $request->name;
-        $email = $request->email;
+        $status = $request->status;
         $capitulo_id = $request->capitulo_id;
 
         $query = User::select('*');
+        if ($id_sisdm) {
+            $query->where('id_sisdm', 'like', '%' . $id_sisdm .'%');
+        }
         if ($nome) {
             $query->where('name', 'like', '%' . $nome . '%');
         }
-        if ($email) {
-            $query->where('email', 'like', '%' . $email . '%');
+        if ($status) {
+            $query->where('status', '=',  $status);
         }
         if ($capitulo_id) {
             $query->where('capitulo_id', $capitulo_id);
@@ -204,7 +208,7 @@ class PainelController extends Controller
 
     public function prioradoListar()
     {
-        $priorados = Priorado::orderBy('numero' , 'asc')->get();
+        $priorados = Priorado::orderBy('numero', 'asc')->get();
         return view('painel/priorado/listar')->with('priorados', $priorados);
     }
 
