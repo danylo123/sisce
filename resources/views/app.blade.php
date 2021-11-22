@@ -188,10 +188,12 @@
                             <ul class="dropdown-menu">
                                 <li><a class="sidebar-link" href="{{ url('painel/avisos') }}">Avisos</a></li>
                                 <li><a class="sidebar-link" href="{{ url('painel/usuarios') }}">Usuários</a></li>
-                                <li><a class="sidebar-link" href="{{ url('painel/capitulos') }}">Capitulos</a></li>
+                                <li><a class="sidebar-link" href="{{ url('painel/capitulos') }}">Capítulos</a></li>
                                 <li><a class="sidebar-link" href="{{ url('painel/priorados') }}">Priorados</a></li>
                                 <li><a class="sidebar-link" href="{{ url('painel/galerias') }}">Galerias</a></li>
                                 <li><a class="sidebar-link" href="{{ url('painel/documentos') }}">Documentos</a>
+                                </li>
+                                <li><a class="sidebar-link" href="{{ url('painel/calendarios') }}">Calendários</a>
                                 </li>
                                 <li><a class="sidebar-link" href="{{ url('painel/midias') }}">Midias</a></li>
                                 <!--  <li><a class="sidebar-link" href="{{ url('painel/video_aulas') }}">Video Aula</a></li>
@@ -204,7 +206,7 @@
                     <li class="nav-item"><a class="sidebar-link" href="{{ url('capitulos') }}"><span
                                 class="icon-holder"><img class="c-brown-500"
                                     src="{{ url('storage/icone/demolay.svg') }}" width="14px"></span><span
-                                class="title">Capitulos</span></a></li>
+                                class="title">Capítulos</span></a></li>
 
                     <li class="nav-item"><a class="sidebar-link" href="{{ url('priorados') }}"><span
                                 class="icon-holder">
@@ -218,6 +220,10 @@
 
 
                             </span><span class="title">Priorados</span></a></li>
+
+                    <li class="nav-item"><a class="sidebar-link" href="{{ url('calendarios') }}"><span
+                                class="icon-holder"><i class="c-deep-grey-500 ti-calendar"></i> </span><span
+                                class="title">Calendários</span></a></li>
 
                     <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
                                 class="icon-holder"><i class="c-orange-500 ti-gallery"></i> </span><span
@@ -293,7 +299,7 @@
                         <li class="dropdown"><a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1"
                                 data-toggle="dropdown">
                                 <div class="peer mR-10"><img class="w-2r bdrs-50p" src="
-                                     @if (auth()->user()->imagem == !null)
+                                        @if (auth()->user()->imagem == !null)
                                     {{ url('storage/users/' . auth()->user()->imagem) }}
                                 @else
                                     {{ url('storage/users/user.png') }}
@@ -325,7 +331,7 @@
                 </div>
             </main>
 
-            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © GCE 2021 - {{ date("Y") }} <a
+            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © GCE 2021 - {{ date('Y') }} <a
                         href="http://demolayceara.org.br" target="_blank" title="Demolay Ceará"> Demolay Ceará</a>.
                     Todos os direitos
                     reservados.</span>

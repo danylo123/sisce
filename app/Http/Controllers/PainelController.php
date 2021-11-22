@@ -11,6 +11,7 @@ use App\Transparencia;
 use App\User;
 use Illuminate\Http\Request;
 use Alert;
+use App\Calendario;
 use App\Documento;
 use App\PastaDocumento;
 use App\Priorado;
@@ -112,7 +113,7 @@ class PainelController extends Controller
 
         $query = User::select('*');
         if ($id_sisdm) {
-            $query->where('id_sisdm', 'like', '%' . $id_sisdm .'%');
+            $query->where('id_sisdm', 'like', '%' . $id_sisdm . '%');
         }
         if ($nome) {
             $query->where('name', 'like', '%' . $nome . '%');
@@ -221,5 +222,29 @@ class PainelController extends Controller
         $regiaos = Regiao::all();
         // Chama a view listar e envia os produtos buscados
         return view('painel/priorado/editar')->with('priorado', $priorado)->with('regiaos', $regiaos);
+    }
+
+    public function calendarioCadastrar()
+    {
+        $calendarios = Calendario::all();
+        $capitulos = Capitulo::all();
+        return view('painel/calendario/cadastrar')->with('calendarios', $calendarios)->with('capitulos', $capitulos);
+    }
+
+    public function calendarioListar()
+    {
+        $calendarios = Calendario::orderBy('id', 'asc')->get();
+        return view('painel/calendario/listar')->with('calendarios', $calendarios);
+    }
+
+    public function calendarioEditar($id)
+    {
+        Calendario::all();
+        Calendario::find($id);
+        $calendario = Calendario::where("id", $id)->get();
+
+        $capitulos = Capitulo::all();
+        // Chama a view listar e envia os produtos buscados
+        return view('painel/calendario/editar')->with('calendario', $calendario)->with('capitulos', $capitulos);
     }
 }

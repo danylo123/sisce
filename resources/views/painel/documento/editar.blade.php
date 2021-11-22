@@ -21,7 +21,7 @@ Cadastro documento
                     </div>
                     <div class="form-group col-md-6"><label for="pasta">Pasta</label>
                         <select id="pasta" name="pasta_documento_id" class="form-control" required>
-                            <option value="">Selecione...</option>
+                            <option value="">Selecione</option>
                             @foreach($pasta as $p)
                             <option value="{{ $p->id }}" @if($d->pasta_documento_id == $p->id) selected @endif>{{ $p->titulo }} /
                                 @if($p->tipo == 1)

@@ -33,8 +33,11 @@ Route::group(['middleware' => ['auth', 'acesso.ativo']], function () {
     Route::get('/capitulos', 'CapituloController@listar')->name('capitulos')->middleware('auth'); // Tela Perfil
     Route::get('/capitulo/{numero}/membros', 'CapituloController@listarMembro')->middleware('auth'); // Tela Perfil
 
-    //Capitulo
+    //Priorados
     Route::get('/priorados', 'PrioradoController@listar')->name('priorados')->middleware('auth'); // Tela Perfil
+
+    //Calendarios
+    Route::get('/calendarios', 'CalendarioController@listar')->name('calendarios')->middleware('auth'); // Tela Perfil
 
     //Listar galerias
     Route::get('/galeria/gme', 'GaleriaController@listarGme')->name('galeria/gme')->middleware('auth'); // Tela Perfil
@@ -140,4 +143,10 @@ Route::group(['middleware' => ['auth', 'acesso.admin']], function () {
     Route::post('/painel/priorado/novo', 'PrioradoController@store')->name('painel.priorado.novo');
     Route::get('/painel/priorado/editar/{id}', 'PainelController@prioradoEditar');
     Route::post('/painel/priorado/editar', 'PrioradoController@update')->name('painel.priorado.edit');
+
+    Route::get('/painel/calendarios', 'PainelController@calendarioListar')->name('painel.calendarios');
+    Route::get('/painel/calendario/novo', 'PainelController@calendarioCadastrar')->name('painel.calendario.cadastrar');
+    Route::post('/painel/calendario/novo', 'CalendarioController@store')->name('painel.calendario.novo');
+    Route::get('/painel/calendario/editar/{id}', 'PainelController@calendarioEditar');
+    Route::post('/painel/calendario/editar', 'CalendarioController@update')->name('painel.calendario.editar');
 });
