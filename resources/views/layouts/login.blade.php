@@ -87,6 +87,7 @@
         #login .container #login-row #login-column #login-box #login-form #register-link {
             margin-top: -85px;
         }
+
     </style>
 
 </head>
@@ -105,9 +106,12 @@
     </script>
     <div>
         @yield('content')
-        <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © GCE 2020 <a href="http://demolayceara.org.br" target="_blank" title="Demolay Ceará"> Demolay Ceará</a>. Todos os direitos
+        <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © GCE 2020 <a
+                    href="http://demolayceara.org.br" target="_blank" title="Demolay Ceará"> Demolay Ceará</a>. Todos os
+                direitos
                 reservados.</span>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="c4c66d0321ac18206eb8bb66-text/javascript"></script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"
+                        type="c4c66d0321ac18206eb8bb66-text/javascript"></script>
             <script type="c4c66d0321ac18206eb8bb66-text/javascript">
                 window.dataLayer = window.dataLayer || [];
 
@@ -125,9 +129,11 @@
     @toastr_render
 
 
-    <script type="c4c66d0321ac18206eb8bb66-text/javascript" src="<?php echo asset('js/vendor.js') ?>"></script>
-    <script type="c4c66d0321ac18206eb8bb66-text/javascript" src="<?php echo asset('js/bundle.js') ?>"></script>
-    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="c4c66d0321ac18206eb8bb66-|49" defer=""></script>
+    <script type="c4c66d0321ac18206eb8bb66-text/javascript" src="<?php echo asset('js/vendor.js'); ?>"></script>
+    <script type="c4c66d0321ac18206eb8bb66-text/javascript" src="<?php echo asset('js/bundle.js'); ?>"></script>
+    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="c4c66d0321ac18206eb8bb66-|49" defer=""></script>
+    
 </body>
 
 </html>

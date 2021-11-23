@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    
+
     /**
      * Create a new controller instance.
      *
@@ -34,7 +36,7 @@ class HomeController extends Controller
 
         $aviso = Aviso::where('ativo', 1)->orderBy('updated_at', 'desc')->limit(3)->get();
         return view('welcome')->with('aviso', $aviso)->with('demolaysAtivos', $demolaysAtivos)
-        ->with('capitulos', $capitulos)->with('priorados', $priorados);
+            ->with('capitulos', $capitulos)->with('priorados', $priorados);
     }
 
     public function logout()

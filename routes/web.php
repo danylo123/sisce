@@ -14,6 +14,8 @@
 
 Route::get('/expulsar', 'HomeController@expulsar')->name('expulsar');
 
+Route::get('/load_foto', 'FotoController@loadFoto')->name('load_foto');
+
 Auth::routes();
 Route::group(['middleware' => ['auth', 'acesso.ativo']], function () {
 

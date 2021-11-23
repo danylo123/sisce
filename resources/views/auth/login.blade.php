@@ -150,15 +150,19 @@
                 <div class="row no-gutters">
                     <div class="col-md-6">
                         <div class="card-body">
-                            <div class="brand-wrapper">
-                                <img src="{{ url('storage/icone/icone.png') }}" alt="logo" class="logo">
-                            </div>
+                            <form name="formulario" id="formulario" method="get" action=""
+                                data-categorias-url="{{ url('load_foto') }}">
+                                <div class="brand-wrapper" id="foto">
+                                    <img src="{{ url('storage/icone/lego.png') }}" alt="logo" class="logo">                                    
+                                </div>
+                            </form>
                             <p class="login-card-description">Sistema da Ordem DeMolay Cearense</p>
                             <form class="form" id="login-form" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="id_sisdm" class="sr-only">ID SISDM</label>
-                                    <input type="text" id="id_sisdm" name="id_sisdm" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                    <input type="text" id="id_sisdm" name="id_sisdm"
+                                        class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
                                         placeholder="ID SISDM">
                                     @if ($errors->has('id_sisdm'))
                                         <div class="invalid-feedback">
@@ -224,6 +228,23 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#id_sisdm').change(function() {
+                const url = $('#formulario').attr("data-categorias-url");
+                idSisdm = $(this).val();
+                $.ajax({
+                    url: url,
+                    data: {
+                        'id_sisdm': idSisdm,
+                    },
+                    success: function(data) {
+                        $("#foto").html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
