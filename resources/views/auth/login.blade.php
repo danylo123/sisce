@@ -141,11 +141,31 @@
         /*# sourceMappingURL=login.css.map */
 
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    @toastr_css
+    @include('sweetalert::alert')
+
+    @if ($errors->any())
+        <script>
+            @foreach ($errors->all() as $error)
+                $(function() {
+                toastr.error("{{ $error }}");
+                })
+            @endforeach
+        </script>
+    @endif
 </head>
 
 <body>
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
         <div class="container">
+            {{-- @if ($errors->any())
+                <ul class="list-group">
+                    @foreach ($errors->all() as $error)
+                        <li class="list-group-item list-group-item-danger">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif --}}
             <div class="card login-card">
                 <div class="row no-gutters">
                     <div class="col-md-6">
@@ -162,25 +182,15 @@
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="id_sisdm" class="sr-only">ID SISDM</label>
-                                    <input type="text" id="id_sisdm" name="id_sisdm"
+                                    <input type="text" id="id_sisdm" name="id_sisdm" value="{{ old('id_sisdm') }}"
                                         class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
                                         placeholder="ID SISDM">
-                                    @if ($errors->has('id_sisdm'))
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $errors->first('id_sisdm') }}</strong>
-                                        </div>
-                                    @endif
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Senha</label>
                                     <input type="password" name="password" id="password"
                                         class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
                                         placeholder="Senha">
-                                    @if ($errors->has('password'))
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </div>
-                                    @endif
                                 </div>
                                 <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit"
                                     value="Entrar">
@@ -226,6 +236,8 @@
       </div> -->
         </div>
     </main>
+    @toastr_js
+    @toastr_render
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

@@ -3,7 +3,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <p>Olá {{ auth()->user()->updated_at }}, seja bem vindo ao SISCE.</p>
+                    <p>Olá {{ auth()->user()->name }}, seja bem vindo ao SISCE.</p>
                     <p>Você ainda não alterou sua senha,
                         <a href="{{ url('perfil') }}">clique aqui</a> para alterá-la.
                     </p>                    
