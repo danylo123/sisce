@@ -11,8 +11,7 @@
     <link href="https://cdn.jsdelivr.net/lightgallery/1.3.9/css/lightgallery.min.css" rel="stylesheet">
     <link href="<?php echo asset('css/galeria.css'); ?>" rel="stylesheet">
     <!-- /Galeria -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     @toastr_css
     @include('sweetalert::alert')
     <style>
@@ -376,7 +375,7 @@
                         <li class="dropdown"><a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1"
                                 data-toggle="dropdown">
                                 <div class="peer mR-10"><img class="w-2r bdrs-50p" src="
-                                         @if (auth()->user()->imagem == !null)
+                                                                         @if (auth()->user()->imagem == !null)
                                     {{ url('storage/users/' . auth()->user()->imagem) }}
                                 @else
                                     {{ url('storage/users/user.png') }}
@@ -429,7 +428,6 @@
     </div>
     @toastr_js
     @toastr_render
-
     <!-- Galeria -->
     <script>
         $(document).ready(function() {
@@ -442,6 +440,17 @@
     <script type="c4c66d0321ac18206eb8bb66-text/javascript" src="<?php echo asset('js/bundle.js'); ?>"></script>
     <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
         data-cf-settings="c4c66d0321ac18206eb8bb66-|49" defer=""></script>
+    @if (auth()->user()->updated_at == null)
+        @if (request()->route()->uri != 'perfil')
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+            @include('aviso-primeiro-acesso')
+            <script>
+                $(document).ready(function() {
+                    $('#primeiroAcesso').modal('show');
+                });
+            </script>
+        @endif
+    @endif
 </body>
 
 </html>

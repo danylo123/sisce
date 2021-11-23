@@ -15,12 +15,12 @@ class PerfilController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }   
+    }
 
     public function perfil()
     {
 
-        $capitulo = Capitulo::all()->take(1);        
+        $capitulo = Capitulo::all()->take(1);
         return view('perfil/editar')->with('capitulo', $capitulo);
     }
 
@@ -35,9 +35,9 @@ class PerfilController extends Controller
         $data['imagem'] = $user->imagem;
 
         if ($resquest->hasFile('imagem') && $resquest->file('imagem')->isValid()) {
-          
-                $name = $user->id .'2' . kebab_case($user->name);
-          
+
+            $name = $user->id . '2' . kebab_case($user->name);
+
 
             $extenstion = $resquest->imagem->extension();
             $nameFile = "{$name}.{$extenstion}";
@@ -47,7 +47,8 @@ class PerfilController extends Controller
             $upload = $resquest->imagem->storeAs('users', $nameFile);
 
             if (!$upload) {
-                return redirect()->back()->with('error', 'Falha ao realizar upload da imagem');
+                toastr()->error('Falha ao realizar upload da imagem');
+                return redirect()->back();
             }
         }
 
@@ -61,10 +62,11 @@ class PerfilController extends Controller
         $update = auth()->user()->update($data);
 
         if ($update) {
-            return redirect()->route('perfil')->with('success', 'Sucesso ao atualizar');
+            toastr()->success('Dados alterados');
+            return redirect()->route('perfil');
         } else {
-            return redirect()->back()->with('error', 'Falha ao atualizar o perfil...');
+            toastr()->error('Falha ao atualizar o perfil');
+            return redirect()->back();
         }
     }
-
 }
