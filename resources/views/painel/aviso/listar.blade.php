@@ -17,10 +17,9 @@ Avisos
         <div class="col-md-12">
 
             <div class="bgc-white bd bdrs-3 p-20 mB-20">
-
-                <div class="row">
-                    <input class="form-control col-md-3" id="myInput" type="text" placeholder="Procure..">
-                    <br>
+                <input class="form-control col-md-3" id="myInput" type="text" placeholder="Procure..">
+                <br>
+                <div class="row">                    
                     <table class="table table-hover">
                         <thead>
                             <tr>

@@ -5,9 +5,9 @@ Capitulos
 @stop
 
 @section('conteudo')
-<h3>Membros capitulo
+<h3>Membros capítulo do
     @foreach ($capitulos as $capitulo)
-    {{ $capitulo->nome }}
+    {{ $capitulo->nome }} N° {{ $capitulo->numero }}
     @endforeach
 </h3>
 
@@ -15,9 +15,9 @@ Capitulos
     <div class="row">
         <div class="col-md-12">
             <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                <div class="table-responsive row">
-                    <input class="form-control col-md-3" id="myInput" type="text" placeholder="Procure...">
-
+                <input class="form-control col-md-3" id="myInput" type="text" placeholder="Procure">
+                <br>
+                <div class="table-responsive row">                    
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -32,7 +32,7 @@ Capitulos
                             @foreach ($c->membros as $m)
                             <tr>
                                 <th scope="row">
-                                    <img width="40" src="
+                                    <img width="30" height="30" src="
                                 @if($m->imagem == !null)
                                 {{ url('storage/users/'.$m->imagem) }}
                                 @else

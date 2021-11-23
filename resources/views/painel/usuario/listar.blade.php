@@ -62,49 +62,57 @@
                             <tbody id="myTable">
                                 @foreach ($usuarios as $c)
                                     <tr>
-                                        <th scope="row">{{ $c->id_sisdm }}</th>
-                                        <td>{{ $c->name }}</td>
-                                        <td>{{ $c->email }}</td>
-                                        <td><span data-toggle="tooltip" data-placement="top"
-                                                title="{{ $c->capitulo->cidade->nome }}">{{ $c->capitulo->nome }} N° {{ $c->capitulo->numero }}</span>
-                                        </td>
-                                        <td>
-                                            @if ($c->status == 'ativo')
-                                                <span class="badge badge-success">Ativo</span>
-                                            @else
-                                                <span class="badge badge-danger">Inativo</span>
-                                            @endif
+                                        <th scope="row">
+                                            <img width="30" height="30" src="
+                                                 @if ($c->imagem == !null)
+                                            {{ url('storage/users/' . $c->imagem) }}
+                                        @else
+                                            {{ url('storage/users/sem-foto.jpg') }}
+                                @endif
+                                " alt="{{ $c->name }}" class="rounded-circle" />
+                                 #{{ $c->id_sisdm }}</th>
+                                <td>{{ $c->name }}</td>
+                                <td>{{ $c->email }}</td>
+                                <td><span data-toggle="tooltip" data-placement="top"
+                                        title="{{ $c->capitulo->cidade->nome }}">{{ $c->capitulo->nome }} N°
+                                        {{ $c->capitulo->numero }}</span>
+                                </td>
+                                <td>
+                                    @if ($c->status == 'ativo')
+                                        <span class="badge badge-success">Ativo</span>
+                                    @else
+                                        <span class="badge badge-danger">Inativo</span>
+                                    @endif
 
-                                        </td>
-                                        <td>
-                                            @if ($c->status == 'ativo')
-                                                <a class="btn btn-warning"
-                                                    href="{{ url('/painel/usuario/editar/') }}/{{ $c->id }}">Editar</a>
-                                                <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                    data-target="#confirm{{ $c->id }}">Excluir</button>
-                                                <div class="modal fade" id="confirm{{ $c->id }}" role="dialog">
-                                                    <div class="modal-dialog modal-md">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body">
-                                                                <p>Deseja realmente excluir <b>{{ $c->name }}</b>?</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <a href="{{ url('/painel/usuario/excluir/') }}/{{ $c->id }}"
-                                                                    type="button" class="btn btn-danger"
-                                                                    id="delete">Deletar</a>
-                                                                <button type="button" data-dismiss="modal"
-                                                                    class="btn btn-default">Cancelar</button>
-                                                            </div>
-                                                        </div>
+                                </td>
+                                <td>
+                                    @if ($c->status == 'ativo')
+                                        <a class="btn btn-warning"
+                                            href="{{ url('/painel/usuario/editar/') }}/{{ $c->id }}">Editar</a>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#confirm{{ $c->id }}">Excluir</button>
+                                        <div class="modal fade" id="confirm{{ $c->id }}" role="dialog">
+                                            <div class="modal-dialog modal-md">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <p>Deseja realmente excluir <b>{{ $c->name }}</b>?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="{{ url('/painel/usuario/excluir/') }}/{{ $c->id }}"
+                                                            type="button" class="btn btn-danger" id="delete">Deletar</a>
+                                                        <button type="button" data-dismiss="modal"
+                                                            class="btn btn-default">Cancelar</button>
                                                     </div>
                                                 </div>
-                                            @else
-                                                <span data-toggle="tooltip" data-placement="top"
-                                                    title="Para ativálo contate um administrador"><button type="button"
-                                                        class="btn btn-info">Info</button></span>
-                                            @endif
-                                        </td>
-                                    </tr>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <span data-toggle="tooltip" data-placement="top"
+                                            title="Para ativálo contate um administrador"><button type="button"
+                                                class="btn btn-info">Info</button></span>
+                                    @endif
+                                </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
