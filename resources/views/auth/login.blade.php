@@ -153,7 +153,7 @@
                             <form name="formulario" id="formulario" method="get" action=""
                                 data-categorias-url="{{ url('load_foto') }}">
                                 <div class="brand-wrapper" id="foto">
-                                    <img src="{{ url('storage/icone/lego.png') }}" alt="logo" class="logo">                                    
+                                    <img src="{{ url('storage/icone/user.png') }}" alt="demolay" class="logo">                                    
                                 </div>
                             </form>
                             <p class="login-card-description">Sistema da Ordem DeMolay Cearense</p>
