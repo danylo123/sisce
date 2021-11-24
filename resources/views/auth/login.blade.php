@@ -30,6 +30,13 @@
             border-radius: 27.5px;
             box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
             overflow: hidden;
+
+        }
+        
+        @media (max-width: 422px) {
+            .login-card {
+                 bottom: 90px;
+            }
         }
 
         .login-card-img {
@@ -38,6 +45,13 @@
             height: 100%;
             -o-object-fit: cover;
             object-fit: cover;
+            display: block;
+        }
+        
+        @media screen and (max-width: 422px) {
+           .login-card-img {
+           display: none;
+          }
         }
 
         .login-card .card-body {
@@ -46,7 +60,7 @@
 
         @media (max-width: 422px) {
             .login-card .card-body {
-                padding: 35px 24px;
+                padding: 30px 24px;
             }
         }
 
@@ -159,13 +173,6 @@
 <body>
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
         <div class="container">
-            {{-- @if ($errors->any())
-                <ul class="list-group">
-                    @foreach ($errors->all() as $error)
-                        <li class="list-group-item list-group-item-danger">{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif --}}
             <div class="card login-card">
                 <div class="row no-gutters">
                     <div class="col-md-6">
@@ -184,7 +191,7 @@
                                     <label for="id_sisdm" class="sr-only">ID SISDM</label>
                                     <input type="text" id="id_sisdm" name="id_sisdm" value="{{ old('id_sisdm') }}"
                                         class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                        placeholder="ID SISDM">
+                                        placeholder="ID SISDM" style="color:#000">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Senha</label>
